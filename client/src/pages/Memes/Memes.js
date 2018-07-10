@@ -15,6 +15,7 @@ class Memes extends Component {
   }
 
   loadMemes = () => {
+    console.log(`Look, Ma. No hands!`);
     API.getMemes()
       .then(res =>
         this.setState({ memes: res.data, uploadedBy: "", tags: [] })
