@@ -77,4 +77,16 @@ const memeSeed = [
         tags:["project", "tv"],
         totalVote: 0
     }
-]
+];
+
+db.Meme
+  .remove({})
+  .then(() => db.Meme.collection.insertMany(memeSeed))
+  .then(data => {
+    console.log(data.result.n + " records inserted!");
+    process.exit(0);
+  })
+  .catch(err => {
+    console.error(err);
+    process.exit(1);
+  });
