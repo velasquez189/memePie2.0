@@ -5,7 +5,7 @@ var memeScheme = new Schema({
     uploadedBy: {
         type: String,
         trim: false,
-        required: "Must be logged-in"
+        // required: "Must be logged-in"
     },
     time: {
         type: Date,

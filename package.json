@@ -1,0 +1,38 @@
+{
+  "name": "memepie2.0",
+  "version": "1.0.0",
+  "description": "Hello, and welcome.",
+  "main": "server.js",
+  "scripts": {
+    "postinstall": "cd client && yarn install",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "if-env NODE_ENV=production && npm run start:prod || npm run start:dev",
+    "start:dev": "concurrently \"nodemon --ignore 'client/*'\" \"npm run client\"",
+    "client": "cd client && npm run start",
+    "build": "cd client && npm run build",
+    "seed": "node scripts/seedDB.js"
+  },
+  "repository": "git+https://github.com/velasquez189/memePie2.0.git && https://git.heroku.com/meme-pie.git",
+  "keywords": [
+    "memes",
+    "dank"
+  ],
+  "author": "\\",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/velasquez189/memePie2.0/issues"
+  },
+  "homepage": "https://github.com/velasquez189/memePie2.0#readme",
+  "dependencies": {
+    "axios": "^0.18.0",
+    "body-parser": "^1.18.3",
+    "concurrently": "^3.6.0",
+    "express": "^4.16.3",
+    "if-env": "^1.0.4",
+    "mongoose": "^5.2.2",
+    "react-router-dom": "^4.3.1",
+    "yarn": "^1.7.0"
+  }
+}
+
+
