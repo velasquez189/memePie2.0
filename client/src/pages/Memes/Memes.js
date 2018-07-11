@@ -28,12 +28,18 @@ class Memes extends Component {
   render() {
     return (
       <Container fluid>
-        <List>
-          {this.state.memes.map(meme => (
-            <ListItem key={meme._id}>
-            </ListItem>
-          ))}
-        </List>
+        {this.state.memes.length ? (
+
+          <List>
+            {this.state.memes.map(meme => (
+              <ListItem key={meme._id}>
+              <img src={meme.imgFilePath} alt="hm" style={{width: '300px', marginBottom: '20px', border: '2px solid black'}}/>
+              </ListItem>
+            ))}
+          </List>
+        ) : (
+            <h3>No Results to Display</h3>
+          )}
       </Container>
     )
   }
@@ -42,3 +48,4 @@ class Memes extends Component {
 export default Memes;
 
 // stayopen
+

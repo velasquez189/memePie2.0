@@ -3,8 +3,10 @@ import React from "react";
 
 export const List = ({ children }) => {
     return (
-        <div className="content">
-            {children}
+        <div className="list-overflow-container">
+            <ul className="list-group">
+                {children}
+            </ul>
         </div>
     );
 };

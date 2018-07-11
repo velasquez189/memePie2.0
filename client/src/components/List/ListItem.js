@@ -1,6 +1,7 @@
 import React from "react";
 
 export const ListItem = props => (
-  <img className="rounded" src={props.children}>
-  </img>
+  <li className="list-group-item">
+    {props.children}
+  </li>
 );
