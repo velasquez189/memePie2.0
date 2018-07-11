@@ -4,8 +4,9 @@
   "description": "Hello, and welcome.",
   "main": "server.js",
   "scripts": {
+    "postinstall": "cd client && yarn install",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "if-env NODE_ENV=production && npm run start:prod || npm run start:dev",
+    "start": "if-env NODE_ENV=production && npm run start:prod && cd client || npm run start:dev",
     "start:dev": "concurrently \"nodemon --ignore 'client/*'\" \"npm run client\"",
     "client": "cd client && npm run start",
     "build": "cd client && npm run build",
@@ -29,6 +30,9 @@
     "express": "^4.16.3",
     "if-env": "^1.0.4",
     "mongoose": "^5.2.2",
-    "react-router-dom": "^4.3.1"
+    "react-router-dom": "^4.3.1",
+    "yarn": "^1.7.0"
   }
 }
+
+
