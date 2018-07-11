@@ -4,6 +4,7 @@
   "description": "Hello, and welcome.",
   "main": "server.js",
   "scripts": {
+    "postinstall": "cd client && yarn install",
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "if-env NODE_ENV=production && npm run start:prod || npm run start:dev",
     "start:dev": "concurrently \"nodemon --ignore 'client/*'\" \"npm run client\"",
@@ -11,7 +12,7 @@
     "build": "cd client && npm run build",
     "seed": "node scripts/seedDB.js"
   },
-  "repository": "git+https://github.com/velasquez189/memePie2.0.git",
+  "repository": "git+https://github.com/velasquez189/memePie2.0.git && https://git.heroku.com/meme-pie.git",
   "keywords": [
     "memes",
     "dank"
@@ -33,3 +34,5 @@
     "yarn": "^1.7.0"
   }
 }
+
+
