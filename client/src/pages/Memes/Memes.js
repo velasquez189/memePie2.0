@@ -1,13 +1,13 @@
 import React, { Component } from "react";
 import API from "../../utils/API";
 import { Container } from "../../components/Grid";
+import { List, ListItem } from "../../components/List";
+
 
 
 class Memes extends Component {
   state = {
-    memes: [],
-    uploadedBy: "",
-    tags: []
+    memes: []
   };
 
   componentDidMount() {
@@ -19,7 +19,7 @@ class Memes extends Component {
     API.getMemes()
       .then(res => {
         this.setState({ memes: res.data, uploadedBy: "", tags: [] });
-        console.log(this.state);
+        console.log(this.state.memes);
       }
       )
       .catch(err => console.log(err));
@@ -28,6 +28,12 @@ class Memes extends Component {
   render() {
     return (
       <Container fluid>
+        <List>
+          {this.state.memes.map(meme => (
+            <ListItem key={meme._id}>
+            </ListItem>
+          ))}
+        </List>
       </Container>
     )
   }
