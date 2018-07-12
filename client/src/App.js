@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import Memes from "./pages/Memes";
 import Nav from './components/Nav/Nav';
 import Footer from './components/Footer/Footer';
+import Upload from './pages/Upload';
 
 const App = () => (
   <Router>
@@ -11,7 +12,7 @@ const App = () => (
       <Switch>
         <Route exact path="/" component={Memes} />
         <Route exact path="/memes" component={Memes} />
-        {/* <Route exact path="/upload" component={Upload} /> */}
+        <Route exact path="/upload" component={Upload} />
       </Switch>
       <Footer />
     </div>
