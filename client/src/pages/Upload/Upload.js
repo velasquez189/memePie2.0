@@ -2,8 +2,8 @@ import React, { Component } from "react";
 import API from "../../utils/API";
 import { Container } from "../../components/Grid";
 import { List, ListItem } from "../../components/List";
-import awsmobile from '../../aws-exports';
 import { Amplify, Storage } from 'aws-amplify';
+// import awsmobile from '../../aws-exports';
 import { withAuthenticator, Greetings, S3Album, Authenticator } from 'aws-amplify-react';
 require("babel-core/register");
 require("babel-polyfill");
@@ -41,16 +41,18 @@ const federated = {
 
 class Upload extends Component {
 
+    state = { tags: [] }
+
     handleUpload(event) {
         const file = event.target.files[0];
         const path = file.name;
-        Storage.put(path, file).then(() => this.setState({ path }));
-        console.log(`Uploaded by: ${user}`);
+        Storage.put(path, file).then(() => this.setState({ path }))
         console.log('cyka blyat!');
+        console.log(`Uploaded by: ${user}`);
         API.uploadMeme({
             imgFilePath: path,
             uploadedBy: user,
-            tags: this.state.synopsis
+            tags: this.state.tags
           })
             // .then(res => this.loadBooks())
             .catch(err => console.log(err));
@@ -59,15 +61,16 @@ class Upload extends Component {
     render() {
         return (
             <Container fluid>
-                <Authenticator>
-                    <S3Album picker />
+                <Authenticator federated={federated} includeGreetings={true}>
+                    <S3Album picker onClick={this.handleUpload}/>
+                    <button onClick={this.handleUpload}> Upload </button>
                 </ Authenticator>
             </Container>
         )
     }
 };
 
-export default withAuthenticator(Upload, {includeGreetings : true});
-
+// export default withAuthenticator(Upload, {includeGreetings : true});
+export default Upload;
 // stayopen
 
