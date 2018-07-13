@@ -36,7 +36,17 @@ const federated = {
 
 class Upload extends Component {
 
-  state = { tags: [] }
+  state = { 
+    tags: [],
+    filePath: "",
+    uploadedBy: "",
+  }
+
+
+  componentDidMount() {
+    var user = localStorage.getItem('CognitoIdentityServiceProvider.7gi6ch1u4kfd9ibnmbsn67hmgb.LastAuthUser');
+    this.setState({uploadedBy: user})
+  }
 
   handleInputChange = event => {
     const { tags, value } = event.target;
