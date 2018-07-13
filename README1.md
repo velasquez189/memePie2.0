@@ -16,8 +16,7 @@ Half way through our project we've made some great progress and we can proudly s
 - Debugging the inspector with no current errors on console.
 - UI looks hella fresh.
 
-![here we are](https://media.giphy.com/media/LVtWx5dcdiXOb9rucn/giphy.gif)
-
+<img src="https://media.giphy.com/media/LVtWx5dcdiXOb9rucn/giphy.gif" width="600" height="500">
 
 # Deployment:
 
