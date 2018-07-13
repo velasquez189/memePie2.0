@@ -4,13 +4,14 @@
   "description": "Hello, and welcome.",
   "main": "server.js",
   "scripts": {
-    "postinstall": "cd client && npm run build",
+    "postinstall": "cd client && npm install && npm run build",
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "if-env NODE_ENV=production && npm run start:prod && cd client || npm run start:dev",
     "start:dev": "concurrently \"nodemon --ignore 'client/*'\" \"npm run client\"",
     "client": "cd client && npm run start",
     "build": "cd client && npm run build",
-    "seed": "node scripts/seedDB.js"
+    "seed": "node scripts/seedDB.js",
+    "start:prod": "node server.js"
   },
   "repository": "git+https://github.com/velasquez189/memePie2.0.git",
   "keywords": [
