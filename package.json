@@ -4,7 +4,7 @@
   "description": "Hello, and welcome.",
   "main": "server.js",
   "scripts": {
-    "postinstall": "cd client && yarn install",
+    "postinstall": "cd client && npm run build",
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "if-env NODE_ENV=production && npm run start:prod && cd client || npm run start:dev",
     "start:dev": "concurrently \"nodemon --ignore 'client/*'\" \"npm run client\"",
