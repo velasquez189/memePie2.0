@@ -11,9 +11,10 @@ require("babel-polyfill");
 
 var user = localStorage.getItem('CognitoIdentityServiceProvider.7gi6ch1u4kfd9ibnmbsn67hmgb.LastAuthUser');
 // aws-amplify-cachefederatedInfo.data.user.name
+// var user = Authenticator.state.authData.username;
 
 const federated = {
-  google_client_id: '431644285431-sc03hn7f3i24a956m97sgmtqb3pegeuj.apps.googleusercontent.com',
+  google_client_id: '431644285431-sc03hn7f3i24a956m97sgmtqb3pegeuj', // .apps.googleusercontent.com
   facebook_app_id: '179714042732736',
   amazon_client_id: '1k6u5ggucfgoeker9cg0fvrj82'
 };
@@ -52,7 +53,8 @@ class Upload extends Component {
   }
 
   componentDidMount() {
-    var user = localStorage.getItem('CognitoIdentityServiceProvider.7gi6ch1u4kfd9ibnmbsn67hmgb.LastAuthUser');
+    var user = this.props.authData.username;
+    // var user = localStorage.getItem('CognitoIdentityServiceProvider.7gi6ch1u4kfd9ibnmbsn67hmgb.LastAuthUser');
     this.setState({ uploadedBy: user })
   }
 
@@ -81,16 +83,15 @@ class Upload extends Component {
     console.log("Uploading...");
     console.log(file);
     console.log(path);
-    // var photoKey = albumPhotosKey + path;
-    Storage.put(path, file).then(() => {
-      this.setState({ filePath: path })
-      // console.log('output' + output)
-    }
-    );
-    console.log(`Uploaded by: ${user}`);
     this.setState({
       filePath: 'https://s3.us-east-2.amazonaws.com/memepie-userfiles-mobilehub-2114693465/public/' + path
     })
+    // var photoKey = albumPhotosKey + path;
+    Storage.put(path, file).then(() => {
+      // this.setState({ filePath: path })
+      // console.log('output' + output)
+    });
+    console.log(`Uploaded by: ${user}`);
     console.log(this.state);
   }
 
@@ -112,7 +113,7 @@ class Upload extends Component {
   render() {
     return (
       <Container fluid>
-        <Authenticator federated={federated} includeGreetings={true}>
+        {/* <Authenticator federated={federated} includeGreetings={true}> */}
           {/* <S3Album picker /> */}
           <input id="photoupload" type="file" accept="image/*" onChange={this.handleUpload.bind(this)} />
           {/* { this.state && <S3Image path={this.state.filePath} /> } */}
@@ -126,13 +127,13 @@ class Upload extends Component {
             <button id="addphoto" onClick={this.mongoUpload}> Add Photo </button>
           </form>
           {/* <button onClick={this.handleUpload}> Upload </button> */}
-        </ Authenticator>
+        {/* </ Authenticator> */}
       </Container>
     )
   }
 };
 
 // export default withAuthenticator(Upload, {includeGreetings : true});
-export default Upload;
+export default withAuthenticator(Upload, {includeGreetings: true, federated: federated});
 // stayopen
 
