@@ -9,6 +9,7 @@ export default {
 
     uploadMeme: function(data){
         console.log("new meme added to database");
+        console.log(data);
         return axios.post("/api/memeRoutes", data);
     }
 };

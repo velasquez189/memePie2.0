@@ -3,7 +3,7 @@ import API from "../../utils/API";
 import { Container } from "../../components/Grid";
 import { Amplify, Storage } from 'aws-amplify';
 // import awsmobile from '../../aws-exports';
-import { withAuthenticator, Greetings, S3Album, Authenticator } from 'aws-amplify-react';
+import { withAuthenticator, Greetings, S3Album, S3Image, Authenticator } from 'aws-amplify-react';
 require("babel-core/register");
 require("babel-polyfill");
 
@@ -20,7 +20,7 @@ const federated = {
 
 // Amplify.configure(awsmobile);
 
- 
+
 //   console.log(file);
 //   console.log(AWS.CognitoIdentityCredentials);
 
@@ -36,16 +36,24 @@ const federated = {
 
 class Upload extends Component {
 
-  state = { 
+  state = {
     tags: [],
     filePath: "",
     uploadedBy: "",
   }
 
 
+  componentWillMount() {
+    window.addEventListener('beforeunload', this.handleWindowClose);
+  }
+
+  componentWillUnMount() {
+    window.removeEventListener('beforeunload', this.handleWindowClose);
+  }
+
   componentDidMount() {
     var user = localStorage.getItem('CognitoIdentityServiceProvider.7gi6ch1u4kfd9ibnmbsn67hmgb.LastAuthUser');
-    this.setState({uploadedBy: user})
+    this.setState({ uploadedBy: user })
   }
 
   handleInputChange = event => {
@@ -64,23 +72,37 @@ class Upload extends Component {
     if (!files.length) {
       return alert('Please choose a file to upload first.');
     };
-    if (document.getElementById("colFormLabelSm").value() === "") {
-      return alert('Please add a one word category.')
-    };
+    // if (document.getElementById("colFormLabelSm").value() === "") {
+    //   return alert('Please add a one word category.')
+    // };
     var file = files[0];
-    var fileName = file.name;
-    var albumPhotosKey = encodeURIComponent(event) + '//';
-
-    var photoKey = albumPhotosKey + fileName;
-    Storage.put(fileName, file).then((output) => {
-      this.setState({ fileName })
-      console.log(output)
+    var path = file.name;
+    // var albumPhotosKey = encodeURIComponent(event) + '//';
+    console.log("Uploading...");
+    console.log(file);
+    console.log(path);
+    // var photoKey = albumPhotosKey + path;
+    Storage.put(path, file).then(() => {
+      this.setState({ filePath: path })
+      // console.log('output' + output)
     }
     );
     console.log(`Uploaded by: ${user}`);
+    this.setState({
+      filePath: 'https://s3.us-east-2.amazonaws.com/memepie-userfiles-mobilehub-2114693465/public/' + path
+    })
+    console.log(this.state);
+  }
+
+  mongoUpload = (event) => {
+    event.preventDefault();
+    this.setState({
+      filePath: 'https://s3.us-east-2.amazonaws.com/memepie-userfiles-mobilehub-2114693465/public/' + this.state.filePath
+    })
+    console.log(this.state)
     API.uploadMeme({
-      imgFilePath: fileName,
-      uploadedBy: user,
+      imgFilePath: this.state.filePath,
+      uploadedBy: this.state.uploadedBy,
       tags: this.state.tags
     })
       // .then(res => this.loadBooks())
@@ -92,15 +114,16 @@ class Upload extends Component {
       <Container fluid>
         <Authenticator federated={federated} includeGreetings={true}>
           {/* <S3Album picker /> */}
-          <input id="photoupload" type="file" accept="image/*" />
+          <input id="photoupload" type="file" accept="image/*" onChange={this.handleUpload.bind(this)} />
+          {/* { this.state && <S3Image path={this.state.filePath} /> } */}
           <form id="tag-form" >
             <div className="form-group row">
               {/* <label htmlFor="colFormLabelSm" className="galada-fnt col-sm-2 col-form-label col-form-label-sm">Add a Category:</label> */}
               <div className="col-xs-4">
-                <input type="string" className="form-control form-control-sm" id="colFormLabelSm" placeholder="Add tags here" onChange={this.handleInputChange}/>
+                <input type="string" className="form-control form-control-sm" id="colFormLabelSm" placeholder="Add tags here" onChange={this.handleInputChange} />
               </div>
             </div>
-            <button id="addphoto" onClick={this.handleUpload}> Add Photo </button>
+            <button id="addphoto" onClick={this.mongoUpload}> Add Photo </button>
           </form>
           {/* <button onClick={this.handleUpload}> Upload </button> */}
         </ Authenticator>
