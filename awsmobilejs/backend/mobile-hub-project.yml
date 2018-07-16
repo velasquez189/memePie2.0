@@ -11,31 +11,31 @@ features:
           sdk-generation-stage-name: Development
         paths:
           /items: !com.amazonaws.mobilehub.v0.Function 
-            codeFilename: uploads/sampleLambda-20180714135304.zip
+            codeFilename: uploads/sampleLambda-20180714165512.zip
             description: 'Handler for calls to resource path : /items/{proxy+}'
             enableCORS: true
             environment: {}
             handler: lambda.handler
-            hashcode: 6Yz768KR8wDLELboxFIZgnL4byrLcr+VXAmGiiwdVd8=
+            hashcode: zjAi3rTPcGmTrUwn7QxM/heFSnczOmcuRF/5fIuiUm8=
             memorySize: '128'
-            modified: '2018-07-14T17:54:10.028+0000'
+            modified: '2018-07-14T20:55:56.389+0000'
             name: sampleLambda
             runtime: nodejs6.10
             timeout: '3'
-            version: HbFbmcxwvs4zQ01n3zHuHwQYqkivzTLd
+            version: a.Dxx_YCICvsesuNagcVRjF_1MlRaAia
           '/items/{proxy+}': !com.amazonaws.mobilehub.v0.Function 
-            codeFilename: uploads/sampleLambda-20180714135304.zip
+            codeFilename: uploads/sampleLambda-20180714165512.zip
             description: 'Handler for calls to resource path : /items/{proxy+}'
             enableCORS: true
             environment: {}
             handler: lambda.handler
-            hashcode: 6Yz768KR8wDLELboxFIZgnL4byrLcr+VXAmGiiwdVd8=
+            hashcode: zjAi3rTPcGmTrUwn7QxM/heFSnczOmcuRF/5fIuiUm8=
             memorySize: '128'
-            modified: '2018-07-14T17:54:10.028+0000'
+            modified: '2018-07-14T20:55:56.389+0000'
             name: sampleLambda
             runtime: nodejs6.10
             timeout: '3'
-            version: W3fgw2yb_iyJ6lk6bNFJcG0m0QgtOnv.
+            version: arUCbTqG1nFuE5RDTmVp18dkD6zN.J0i
   content-delivery: !com.amazonaws.mobilehub.v0.ContentDelivery 
     attributes:
       enabled: true
