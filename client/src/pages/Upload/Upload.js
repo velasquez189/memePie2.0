@@ -22,10 +22,6 @@ const federated = {
 // Amplify.configure(awsmobile);
 
 
-//   console.log(file);
-//   console.log(AWS.CognitoIdentityCredentials);
-
-
 // var albumBucketName = 'memetest-userfiles-mobilehub-1037221317';
 
 // var s3 = new AWS.S3({
@@ -81,18 +77,16 @@ class Upload extends Component {
     var path = file.name;
     // var albumPhotosKey = encodeURIComponent(event) + '//';
     console.log("Uploading...");
-    console.log(file);
-    console.log(path);
+    // console.log(file);
+    // console.log(path); 
     this.setState({
       filePath: 'https://s3.us-east-2.amazonaws.com/memepie-userfiles-mobilehub-2114693465/public/' + path
     })
-    // var photoKey = albumPhotosKey + path;
     Storage.put(path, file).then(() => {
       // this.setState({ filePath: path })
-      // console.log('output' + output)
     });
-    console.log(`Uploaded by: ${user}`);
-    console.log(this.state);
+    // console.log(`${file} Uploaded by: ${user}`);
+    // console.log(this.state);
   }
 
   mongoUpload = (event) => {
@@ -133,7 +127,5 @@ class Upload extends Component {
   }
 };
 
-// export default withAuthenticator(Upload, {includeGreetings : true});
+// export default Upload
 export default withAuthenticator(Upload, {includeGreetings: true, federated: federated});
-// stayopen
-
