@@ -11,6 +11,7 @@ const App = () => (
       <Nav />
       <Switch>
         <Route exact path="/" component={Memes} />
+        <Route exact path="/fresh" component={Memes} />
         <Route exact path="/memes" component={Memes} />
         <Route exact path="/upload" component={Upload} />
       </Switch>

@@ -25,6 +25,7 @@
   "homepage": "https://github.com/velasquez189/memePie2.0#readme",
   "dependencies": {
     "aws-amplify": "^0.4.8",
+    "awsmobile-cli": "^1.1.4",
     "axios": "^0.18.0",
     "body-parser": "^1.18.3",
     "concurrently": "^3.6.0",
