@@ -2,11 +2,10 @@ const router = require("express").Router();
 const memeController = require("../../controllers/memeController");
 
 router.route("/")
-    .get(memeController.findFresh);
+    .get(memeController.findDank);
 
 router.route("/fresh")
     .get(memeController.findFresh);
-
 
 router.route("/dank")
     .get(memeController.findDank);
@@ -14,4 +13,7 @@ router.route("/dank")
 router.route("/:tag")
     .get(memeController.findByTag);
 
-module.exports = router;
+router.route("/upload")
+    .post(memeController.create);
+
+module.exports = router; 

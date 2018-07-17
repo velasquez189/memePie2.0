@@ -1,0 +1,9 @@
+{
+	"name": "memePie2.0-2018-07-11-13-15-38",
+	"apiId": "wbhkfl4sa5e45pecjmcxfylvy4",
+	"authenticationType": "AWS_IAM",
+	"arn": "arn:aws:appsync:us-east-2:691063051205:apis/wbhkfl4sa5e45pecjmcxfylvy4",
+	"uris": {
+		"GRAPHQL": "https://6o3lfbcsjrgylisaoqdnpusfza.appsync-api.us-east-2.amazonaws.com/graphql"
+	}
+}

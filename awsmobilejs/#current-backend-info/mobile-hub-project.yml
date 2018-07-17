@@ -1,0 +1,89 @@
+--- !com.amazonaws.mobilehub.v0.Project
+apps: 
+  web: !com.amazonaws.mobilehub.v0.AppDO {}
+features: 
+  cloudlogic: !com.amazonaws.mobilehub.v0.CloudLogic
+    components: 
+      sampleCloudApi: !com.amazonaws.mobilehub.v0.API
+        attributes: 
+          name: sampleCloudApi
+          requires-signin: false
+          sdk-generation-stage-name: Development
+        paths: 
+          /items: !com.amazonaws.mobilehub.v0.Function
+            codeFilename: uploads/sampleLambda-20180716222856.zip
+            description: "Handler for calls to resource path : /items/{proxy+}"
+            enableCORS: true
+            environment:  {}
+            handler: lambda.handler
+            hashcode: 2XoCx+dCiOaIDdLn9VIjFArYzyT9GxUDZB+uP9nTTVg=
+            memorySize: "128"
+            modified: "2018-07-17T02:29:49.974+0000"
+            name: sampleLambda
+            runtime: nodejs6.10
+            timeout: "3"
+            version: _tdZRykDZ5aQNd6OqogZEEFeXqhbRYZI
+          "/items/{proxy+}": !com.amazonaws.mobilehub.v0.Function
+            codeFilename: uploads/sampleLambda-20180716222856.zip
+            description: "Handler for calls to resource path : /items/{proxy+}"
+            enableCORS: true
+            environment:  {}
+            handler: lambda.handler
+            hashcode: 2XoCx+dCiOaIDdLn9VIjFArYzyT9GxUDZB+uP9nTTVg=
+            memorySize: "128"
+            modified: "2018-07-17T02:29:49.974+0000"
+            name: sampleLambda
+            runtime: nodejs6.10
+            timeout: "3"
+            version: pKbmpcUOKHYAQcrTgjQge52fk8xYfkid
+  content-delivery: !com.amazonaws.mobilehub.v0.ContentDelivery
+    attributes: 
+      enabled: true
+      visibility: public-global
+    components: 
+      release: !com.amazonaws.mobilehub.v0.Bucket {}
+  database: !com.amazonaws.mobilehub.v0.Database
+    components: 
+      database-nosql: !com.amazonaws.mobilehub.v0.NoSQLDatabase
+        tables: 
+          - !com.amazonaws.mobilehub.v0.NoSQLTable
+            attributes: 
+              email: S
+              personId: S
+              personName: S
+              phone: S
+              teamId: S
+            hashKeyName: teamId
+            hashKeyType: S
+            indexes: 
+              - !com.amazonaws.mobilehub.v0.NoSQLIndex
+                hashKeyName: teamId
+                hashKeyType: S
+                indexName: personName-index
+                rangeKeyName: personName
+                rangeKeyType: S
+            rangeKeyName: personId
+            rangeKeyType: S
+            tableName: ___DYNAMIC_PREFIX___-AWSMobileTable
+            tablePrivacy: public
+  mobile-analytics: !com.amazonaws.mobilehub.v0.Pinpoint
+    components: 
+      analytics: !com.amazonaws.mobilehub.v0.PinpointAnalytics {}
+  sign-in: !com.amazonaws.mobilehub.v0.SignIn
+    attributes: 
+      enabled: true
+      optional-sign-in: true
+    components: 
+      sign-in-facebook: !com.amazonaws.mobilehub.v0.StandardIdentityProvider
+        attributes: 
+          provider-id: "179714042732736"
+          provider-name: facebook
+      sign-in-user-pools: !com.amazonaws.mobilehub.v0.UserPoolsIdentityProvider
+        attributes: 
+          user-pool-id: us-east-2_Be1yLKCCo
+  user-files: !com.amazonaws.mobilehub.v0.UserFiles
+    attributes: 
+      enabled: true
+      wildcard-cors-policy: true
+name: memePie2.0-2018-07-11-13-15-38
+region: us-east-2
