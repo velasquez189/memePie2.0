@@ -11,6 +11,6 @@ export default {
     uploadMeme: function(data){
         console.log("adding new meme to database...");
         console.log(data);
-        return axios.post("/api/memeRoutes", data);
+        return axios.post("/api/memeRoutes/upload", data);
     }
 };
