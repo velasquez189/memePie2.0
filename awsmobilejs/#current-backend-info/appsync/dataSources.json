@@ -1,0 +1,117 @@
+{
+	"dataSources": [
+		{
+			"dataSourceArn": "arn:aws:appsync:us-east-2:691063051205:apis/wbhkfl4sa5e45pecjmcxfylvy4/datasources/AppSyncCommentTable",
+			"name": "AppSyncCommentTable",
+			"description": null,
+			"type": "AMAZON_DYNAMODB",
+			"serviceRoleArn": "arn:aws:iam::691063051205:role/appsync-datasource-ddb-yQTeLA-AppSyncCommentTable-",
+			"dynamodbConfig": {
+				"tableName": "AppSyncCommentTable-GFBYPgyy",
+				"awsRegion": "us-east-1",
+				"useCallerCredentials": false
+			}
+		},
+		{
+			"dataSourceArn": "arn:aws:appsync:us-east-2:691063051205:apis/wbhkfl4sa5e45pecjmcxfylvy4/datasources/AppSyncEventTable",
+			"name": "AppSyncEventTable",
+			"description": null,
+			"type": "AMAZON_DYNAMODB",
+			"serviceRoleArn": "arn:aws:iam::691063051205:role/appsync-datasource-ddb-yQTeLA-AppSyncEventTable-GF",
+			"dynamodbConfig": {
+				"tableName": "AppSyncEventTable-GFBYPgyy",
+				"awsRegion": "us-east-1",
+				"useCallerCredentials": false
+			}
+		}
+	],
+	"tables": [
+		{
+			"AttributeDefinitions": [
+				{
+					"AttributeName": "commentId",
+					"AttributeType": "S"
+				},
+				{
+					"AttributeName": "createdAt",
+					"AttributeType": "S"
+				},
+				{
+					"AttributeName": "eventId",
+					"AttributeType": "S"
+				}
+			],
+			"TableName": "AppSyncCommentTable-GFBYPgyy",
+			"KeySchema": [
+				{
+					"AttributeName": "eventId",
+					"KeyType": "HASH"
+				},
+				{
+					"AttributeName": "commentId",
+					"KeyType": "RANGE"
+				}
+			],
+			"TableStatus": "ACTIVE",
+			"CreationDateTime": "2018-07-11T17:18:52.240Z",
+			"ProvisionedThroughput": {
+				"NumberOfDecreasesToday": 0,
+				"ReadCapacityUnits": 5,
+				"WriteCapacityUnits": 5
+			},
+			"TableSizeBytes": 0,
+			"ItemCount": 0,
+			"TableArn": "arn:aws:dynamodb:us-east-1:691063051205:table/AppSyncCommentTable-GFBYPgyy",
+			"TableId": "a1530d01-7e5c-4446-8c5f-5dfff6ee590e",
+			"LocalSecondaryIndexes": [
+				{
+					"IndexName": "LSI-AppSyncCommentTable-by-eventId-createdAt",
+					"KeySchema": [
+						{
+							"AttributeName": "eventId",
+							"KeyType": "HASH"
+						},
+						{
+							"AttributeName": "createdAt",
+							"KeyType": "RANGE"
+						}
+					],
+					"Projection": {
+						"ProjectionType": "ALL"
+					},
+					"IndexSizeBytes": 0,
+					"ItemCount": 0,
+					"IndexArn": "arn:aws:dynamodb:us-east-1:691063051205:table/AppSyncCommentTable-GFBYPgyy/index/LSI-AppSyncCommentTable-by-eventId-createdAt"
+				}
+			],
+			"Region": "us-east-1"
+		},
+		{
+			"AttributeDefinitions": [
+				{
+					"AttributeName": "id",
+					"AttributeType": "S"
+				}
+			],
+			"TableName": "AppSyncEventTable-GFBYPgyy",
+			"KeySchema": [
+				{
+					"AttributeName": "id",
+					"KeyType": "HASH"
+				}
+			],
+			"TableStatus": "ACTIVE",
+			"CreationDateTime": "2018-07-11T17:18:52.231Z",
+			"ProvisionedThroughput": {
+				"NumberOfDecreasesToday": 0,
+				"ReadCapacityUnits": 5,
+				"WriteCapacityUnits": 5
+			},
+			"TableSizeBytes": 0,
+			"ItemCount": 0,
+			"TableArn": "arn:aws:dynamodb:us-east-1:691063051205:table/AppSyncEventTable-GFBYPgyy",
+			"TableId": "8fa4e36d-2b46-4426-b881-d2170e7da34d",
+			"Region": "us-east-1"
+		}
+	]
+}
