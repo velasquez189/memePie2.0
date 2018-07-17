@@ -38,4 +38,5 @@ const awsmobile = {
     'aws_appsync_region': 'us-east-2',
     'aws_appsync_authenticationType': 'AWS_IAM',
 }
+
 export default awsmobile;
