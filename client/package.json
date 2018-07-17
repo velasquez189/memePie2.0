@@ -3,6 +3,8 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "aws-amplify": "^0.4.8",
+    "aws-amplify-react": "^0.1.54",
     "axios": "^0.18.0",
     "react": "^16.4.1",
     "react-dom": "^16.4.1",
@@ -16,5 +18,10 @@
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject"
   },
-  "proxy": "http://localhost:3001"
+  "proxy": {
+    "/api": {
+      "target": "http://localhost:3001",
+      "secure": false
+    }
+  }
 }
