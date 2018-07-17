@@ -1,0 +1,13 @@
+{
+    "apiId": "wbhkfl4sa5e45pecjmcxfylvy4",
+    "region": "us-east-2",
+    "name": "memePie2.0-2018-07-11-13-15-38",
+    "graphqlEndpoint": "https://6o3lfbcsjrgylisaoqdnpusfza.appsync-api.us-east-2.amazonaws.com/graphql",
+    "authenticationType": "AWS_IAM",
+    "creationTime": "2018-07-11-13-19-15",
+    "lastUpdateTime": "2018-07-11-13-19-15",
+    "lastSyncTime": "2018-07-16-22-32-00",
+    "lastPushSuccessful": true,
+    "AppSyncConsoleUrl": "https://console.aws.amazon.com/appsync/home?region=us-east-2#/wbhkfl4sa5e45pecjmcxfylvy4/v1/home",
+    "lastSyncToDevTime": "2018-07-16-22-32-44"
+}
