@@ -2,7 +2,7 @@ const router = require("express").Router();
 const memeController = require("../../controllers/memeController");
 
 router.route("/")
-    .get(memeController.findDank);
+    .get(memeController.findFresh);
 
 router.route("/fresh")
     .get(memeController.findFresh);
