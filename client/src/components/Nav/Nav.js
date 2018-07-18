@@ -1,7 +1,8 @@
-import React from 'react'
+import React from 'react';
+import "./Nav.css"; 
 
 const Nav = () => (
-    <nav className='navbar navbar-expand-lg navbar-dark bg-primary'>
+    <nav className='navbar fixed-top navbar-expand-lg navbar-dark bg-light'>
         <a className='navbar-brand' href='/'>memePie</a>
         <div className="collapse navbar-collapse" id="navbarNav">
             <ul className="navbar-nav">
