@@ -90,6 +90,13 @@ class Upload extends Component {
   }
 
   mongoUpload = (event) => {
+    if (this.state.filePath === "") {
+      alert("Select a file to upload");
+      return;
+    } else if (this.state.tags.length === 0) {
+      alert("You must add tags for your meme");
+      return;
+    }
     event.preventDefault();
     this.setState({
       filePath: 'https://s3.us-east-2.amazonaws.com/memepie-userfiles-mobilehub-2114693465/public/' + this.state.filePath
