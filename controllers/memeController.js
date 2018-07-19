@@ -5,9 +5,9 @@ module.exports = {
         console.log("fresh");
         console.log(req.body.query);
         db.Meme
-            .find()
-            .skip(req.body.query)
-            .limit(12)
+            .find({ })
+            // .skip(req.body.query)
+            .limit(req.body.query)
             .sort({time: -1})
             .then(dbModel => res.json(dbModel))
             .catch(err => res.status(422).json(err));

@@ -8,7 +8,7 @@ import { List, ListItem } from "../../components/List";
 class Memes extends Component {
   state = {
     memes: [],
-    n: 0
+    n: 1
   };
 
   componentDidMount() {
@@ -16,7 +16,7 @@ class Memes extends Component {
   }
 
   loadMemes = () => {
-    let n = this.state.n *12;
+    let n = this.state.n *6;
     console.log(`Look, Ma. No hands!`);
     API.getMemes({query: n})
       .then(res => {
