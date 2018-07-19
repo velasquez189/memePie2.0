@@ -21,6 +21,10 @@ var memeScheme = new Schema({
     totalVote: {
         type: Number,
         default: 0
+    },
+    offensive: {
+        type: Boolean,
+        default: false
     }
 })
 
