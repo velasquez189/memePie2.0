@@ -22,8 +22,10 @@ module.exports = {
     },
     findByTag: function(req, res) {
         console.log('searching for');
+        console.log(req.body.keywords)
         db.Meme
-            .find({tags: req.params.tags})
+            .find({tags: req.body.keywords})
+            .limit(req.body.query)
             .sort({time: -1})
             .then(dbModel => res.json(dbModel))
             .catch(err => res.status(422).json(err));

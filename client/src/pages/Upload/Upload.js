@@ -63,7 +63,6 @@ class Upload extends Component {
   };
 
   handleCheckbox = event => {
-
     this.setState({ offensive: !this.state.offensive })
   }
 
