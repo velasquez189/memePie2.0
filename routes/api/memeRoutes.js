@@ -3,6 +3,9 @@ const memeController = require("../../controllers/memeController");
 
 router.route("/")
     .get(memeController.findFresh);
+    
+router.route("/index")
+.get(memeController.findFresh);
 
 router.route("/fresh")
     .get(memeController.findFresh);
