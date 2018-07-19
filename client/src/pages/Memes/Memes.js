@@ -33,7 +33,7 @@ class Memes extends Component {
           <List>
             {this.state.memes.map(meme => (
               <ListItem key={meme._id}>
-              <img src={meme.imgFilePath} alt="hm" style={{width: '300px', marginBottom: '20px', border: '2px solid black'}}/>
+              <img className="rounded" src={meme.imgFilePath} alt="hm" style={{width: '300px', marginBottom: '20px', border: '2px solid black'}}/>
               </ListItem>
             ))}
           </List>
