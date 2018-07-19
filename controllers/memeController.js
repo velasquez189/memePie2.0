@@ -3,8 +3,11 @@ const db = require("../models");
 module.exports = {
     findFresh: function(req, res) {
         console.log("fresh");
+        console.log(req.body.query);
         db.Meme
-            .find(req.query)
+            .find()
+            .skip(req.body.query)
+            .limit(12)
             .sort({time: -1})
             .then(dbModel => res.json(dbModel))
             .catch(err => res.status(422).json(err));

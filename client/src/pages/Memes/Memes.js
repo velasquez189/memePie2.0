@@ -7,7 +7,8 @@ import { List, ListItem } from "../../components/List";
 
 class Memes extends Component {
   state = {
-    memes: []
+    memes: [],
+    n: 0
   };
 
   componentDidMount() {
@@ -15,10 +16,15 @@ class Memes extends Component {
   }
 
   loadMemes = () => {
+    let n = this.state.n *12;
     console.log(`Look, Ma. No hands!`);
-    API.getMemes()
+    API.getMemes({query: n})
       .then(res => {
-        this.setState({ memes: res.data, uploadedBy: "", tags: [] });
+        this.setState({ memes: res.data, 
+                        uploadedBy: "", 
+                        tags: [],
+                        n: this.state.n +1
+                       });
         console.log(this.state.memes);
       }
       )
@@ -36,6 +42,8 @@ class Memes extends Component {
               <img src={meme.imgFilePath} alt="hm" style={{width: '300px', marginBottom: '20px', border: '2px solid black'}}/>
               </ListItem>
             ))}
+            <button onClick={this.loadMemes}>Load more Memes</button>
+            <br /><br /><br />
           </List>
         ) : (
             <h3>No Results to Display</h3>
@@ -46,6 +54,3 @@ class Memes extends Component {
 };
 
 export default Memes;
-
-// stayopen
-
