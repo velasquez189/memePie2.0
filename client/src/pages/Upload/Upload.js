@@ -14,9 +14,9 @@ var user = localStorage.getItem('CognitoIdentityServiceProvider.7gi6ch1u4kfd9ibn
 // var user = Authenticator.state.authData.username;
 
 const federated = {
-  google_client_id: '431644285431-sc03hn7f3i24a956m97sgmtqb3pegeuj', // .apps.googleusercontent.com
+  // google_client_id: '431644285431-sc03hn7f3i24a956m97sgmtqb3pegeuj', // .apps.googleusercontent.com
   facebook_app_id: '179714042732736',
-  amazon_client_id: '1k6u5ggucfgoeker9cg0fvrj82'
+  // amazon_client_id: '1k6u5ggucfgoeker9cg0fvrj82'
 };
 
 // Amplify.configure(awsmobile);
@@ -90,6 +90,13 @@ class Upload extends Component {
   }
 
   mongoUpload = (event) => {
+    if (this.state.filePath === "") {
+      alert("Select a file to upload");
+      return;
+    } else if (this.state.tags.length === 0) {
+      alert("You must add tags for your meme");
+      return;
+    }
     event.preventDefault();
     this.setState({
       filePath: 'https://s3.us-east-2.amazonaws.com/memepie-userfiles-mobilehub-2114693465/public/' + this.state.filePath
@@ -100,7 +107,7 @@ class Upload extends Component {
       uploadedBy: this.state.uploadedBy,
       tags: this.state.tags
     })
-      // .then(res => this.loadBooks())
+      .then(res => window.location = "/fresh")
       .catch(err => console.log(err));
   }
 
@@ -120,7 +127,6 @@ class Upload extends Component {
             </div>
             <button id="addphoto" onClick={this.mongoUpload}> Add Photo </button>
           </form>
-          {/* <button onClick={this.handleUpload}> Upload </button> */}
         {/* </ Authenticator> */}
       </Container>
     )

@@ -1,0 +1,29 @@
+.fixed-top {
+    border-bottom: 3px solid grey;
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: 0;
+    z-index: 1030;
+}
+
+.fixed-bottom {
+    border-top: 3px solid gray;
+}
+
+.navbar-brand {
+    font-family: 'Galada', cursive;
+    display: inline-block;
+    padding-top: .3125rem;
+    padding-bottom: .3125rem;
+    margin-right: 1rem;
+    font-size: 1.25rem;
+    line-height: inherit;
+    white-space: nowrap;
+    color: black !important;
+}
+
+.nav-link {
+    font-family: 'Press Start 2P', cursive;
+    color: black !important;
+}
