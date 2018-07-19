@@ -52,10 +52,10 @@ class Search extends Component {
         {this.state.memes.length ? (
 
           <List>
-            {/* {this.state.memes.map(meme => (
+            {this.state.memes.map(meme => (
               <ListItem key={meme._id}>
               <img className="rounded" src={meme.imgFilePath} alt="hm" offensive={meme.offensive} onClick={this.toggleOffensive} style={{width: '300px', marginBottom: '20px', border: '2px solid black'}}/>
-              </ListItem> */}
+              </ListItem>
             ))}
             <button onClick={this.loadMemes}>Load more Memes</button>
             <br /><br /><br />
