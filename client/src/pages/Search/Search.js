@@ -5,20 +5,26 @@ import { List, ListItem } from "../../components/List";
 
 
 
-class Memes extends Component {
+class Search extends Component {
   state = {
     memes: [],
-    n: 1
+    n: 1,
+    keyword: "",
   };
 
   componentDidMount() {
     this.loadMemes();
   }
 
+  handleKeywords = (event)=> {
+      const {keyword, value} = event.target;
+      this.setState({keyword: value})
+  }
+
   loadMemes = () => {
     let n = this.state.n *6;
     console.log(`Look, Ma. No hands!`);
-    API.getMemes({query: n})
+    API.searchMemes({query: n, keywords: this.state.keyword})
       .then(res => {
         this.setState({ memes: res.data, 
                         // uploadedBy: "", 
@@ -39,6 +45,10 @@ class Memes extends Component {
   render() {
     return (
       <Container fluid>
+
+      <input type="text" onChange={this.handleKeywords}/>
+        <button onClick={this.loadMemes}> Search </button>
+
         {this.state.memes.length ? (
 
           <List>
@@ -58,4 +68,4 @@ class Memes extends Component {
   }
 };
 
-export default Memes;
+export default Search;

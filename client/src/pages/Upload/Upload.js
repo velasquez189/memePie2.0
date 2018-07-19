@@ -37,6 +37,7 @@ class Upload extends Component {
     tags: [],
     filePath: "",
     uploadedBy: "",
+    offensive: false,
   }
 
 
@@ -57,36 +58,30 @@ class Upload extends Component {
   handleInputChange = event => {
     const { tags, value } = event.target;
     this.setState({
-      tags: value
+      tags: value.split(',')
     });
   };
+
+  handleCheckbox = event => {
+    this.setState({ offensive: !this.state.offensive })
+  }
 
 
   handleUpload(event) {
     event.preventDefault();
-    // const file = event.target.files[0];
-    // const path = file.name;
     var files = document.getElementById('photoupload').files;
     if (!files.length) {
       return alert('Please choose a file to upload first.');
     };
-    // if (document.getElementById("colFormLabelSm").value() === "") {
-    //   return alert('Please add a one word category.')
-    // };
     var file = files[0];
     var path = file.name;
-    // var albumPhotosKey = encodeURIComponent(event) + '//';
     console.log("Uploading...");
-    // console.log(file);
-    // console.log(path); 
     this.setState({
       filePath: 'https://s3.us-east-2.amazonaws.com/memepie-userfiles-mobilehub-2114693465/public/' + path
     })
     Storage.put(path, file).then(() => {
       // this.setState({ filePath: path })
     });
-    // console.log(`${file} Uploaded by: ${user}`);
-    // console.log(this.state);
   }
 
   mongoUpload = (event) => {
@@ -105,7 +100,8 @@ class Upload extends Component {
     API.uploadMeme({
       imgFilePath: this.state.filePath,
       uploadedBy: this.state.uploadedBy,
-      tags: this.state.tags
+      tags: this.state.tags,
+      offensive: this.state.offensive
     })
       .then(res => window.location = "/fresh")
       .catch(err => console.log(err));
@@ -123,6 +119,7 @@ class Upload extends Component {
               {/* <label htmlFor="colFormLabelSm" className="galada-fnt col-sm-2 col-form-label col-form-label-sm">Add a Category:</label> */}
               <div className="col-xs-4">
                 <input type="string" className="form-control form-control-sm" id="colFormLabelSm" placeholder="Add tags here" onChange={this.handleInputChange} />
+                Is this meme Offensive? <input type="checkbox" className="offensive" onChange={this.handleCheckbox} /> 
               </div>
             </div>
             <button id="addphoto" onClick={this.mongoUpload}> Add Photo </button>
