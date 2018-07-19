@@ -7,6 +7,10 @@
     z-index: 1030;
 }
 
+.fixed-bottom {
+    border-top: 3px solid gray;
+}
+
 .navbar-brand {
     font-family: 'Galada', cursive;
     display: inline-block;
@@ -16,5 +20,10 @@
     font-size: 1.25rem;
     line-height: inherit;
     white-space: nowrap;
+    color: black !important;
+}
+
+.nav-link {
+    font-family: 'Press Start 2P', cursive;
     color: black !important;
 }
