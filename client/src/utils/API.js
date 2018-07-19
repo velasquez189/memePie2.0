@@ -2,9 +2,9 @@ import axios from "axios";
 
 export default {
     //Gets all memes
-    getMemes: function() {
+    getMemes: function(data) {
         console.log(`No Garland I don't dance.`);
-        return axios.get("/api/memeRoutes");
+        return axios.post("/api/memeRoutes", data);
     },
 
     // Uploads a meme to the database
