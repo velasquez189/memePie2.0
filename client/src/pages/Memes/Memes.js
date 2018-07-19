@@ -21,14 +21,19 @@ class Memes extends Component {
     API.getMemes({query: n})
       .then(res => {
         this.setState({ memes: res.data, 
-                        uploadedBy: "", 
-                        tags: [],
+                        // uploadedBy: "", 
+                        // tags: [],
                         n: this.state.n +1
                        });
         console.log(this.state.memes);
       }
       )
       .catch(err => console.log(err));
+  }
+
+  toggleOffensive = (event) => {
+    console.log(event.target);
+    event.target.offensive = !event.target.offensive;
   }
 
   render() {
@@ -39,7 +44,7 @@ class Memes extends Component {
           <List>
             {this.state.memes.map(meme => (
               <ListItem key={meme._id}>
-              <img className="rounded" src={meme.imgFilePath} alt="hm" style={{width: '300px', marginBottom: '20px', border: '2px solid black'}}/>
+              <img className="rounded" src={meme.imgFilePath} alt="hm" offensive={meme.offensive} onClick={this.toggleOffensive} style={{width: '300px', marginBottom: '20px', border: '2px solid black'}}/>
               </ListItem>
             ))}
             <button onClick={this.loadMemes}>Load more Memes</button>

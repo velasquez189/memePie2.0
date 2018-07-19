@@ -58,7 +58,7 @@ class Upload extends Component {
   handleInputChange = event => {
     const { tags, value } = event.target;
     this.setState({
-      tags: value
+      tags: value.split(',')
     });
   };
 
