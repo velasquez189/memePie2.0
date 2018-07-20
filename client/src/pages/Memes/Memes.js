@@ -32,13 +32,16 @@ class Memes extends Component {
   }
 
   toggleOffensive = (event) => {
-    let offensiveness = event.target.getAttribute('data-offensive');
+    let offensiveness = event.target["data-offensive"];
     console.log(offensiveness);
-    if (offensiveness === "true") {
-      offensiveness = "false";
-    } else if (offensiveness === "false") {
-      offensiveness = "true";
-    }
+    // if (offensiveness == "true") {
+    //   offensiveness = "false"
+    // } else 
+    // if (offensiveness == false) {
+      offensiveness = false;
+    // }
+    // offensiveness = !offensiveness;
+    console.log(offensiveness);
   }
 
   render() {
@@ -48,16 +51,16 @@ class Memes extends Component {
 
           <List>
             {this.state.memes.map(meme => (
-              <ListItem key={meme._id} data-offensive={meme.offensive} onClick={this.toggleOffensive}>
+              <ListItem key={meme._id}>
               {
                 meme.offensive ? (
-                  <img src={"../../../../images/triggered.jpg"} data-offensive={meme.offensive.toString()} onClick={this.toggleOffensive}/>
+                  <img src={"../../../../images/triggered.jpg"} data-offensive={meme.offensive} onClick={this.toggleOffensive}/>
                 ) : (
                   <img className="rounded" 
                     src={meme.imgFilePath} 
                     alt="hm" 
-                    data-offensive={meme.offensive.toString()} 
-                    onClick={this.toggleOffensive} 
+                    // data-offensive={meme.offensive} 
+                    // onClick={this.toggleOffensive} 
                     style={{width: '300px', marginBottom: '20px', border: '2px solid black'}}
                   />
                 )
