@@ -3,8 +3,11 @@ const db = require("../models");
 module.exports = {
     findFresh: function(req, res) {
         console.log("fresh");
+        console.log(req.body.query);
         db.Meme
-            .find(req.query)
+            .find({ })
+            // .skip(req.body.query)
+            .limit(req.body.query)
             .sort({time: -1})
             .then(dbModel => res.json(dbModel))
             .catch(err => res.status(422).json(err));
@@ -19,8 +22,10 @@ module.exports = {
     },
     findByTag: function(req, res) {
         console.log('searching for');
+        console.log(req.body.keywords)
         db.Meme
-            .find({tags: req.params.tags})
+            .find({tags: req.body.keywords})
+            .limit(req.body.query)
             .sort({time: -1})
             .then(dbModel => res.json(dbModel))
             .catch(err => res.status(422).json(err));

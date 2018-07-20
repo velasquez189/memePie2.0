@@ -12,6 +12,10 @@ const Nav = () => (
                 <li className="nav-item">
                     <a className="nav-link" href="upload">Upload</a>
                 </li>
+                <li className="nav-item">
+                    <a className="nav-link" href="search">Search</a>
+                </li>
+
             </ul>
         </div>
     </nav>
