@@ -32,8 +32,13 @@ class Memes extends Component {
   }
 
   toggleOffensive = (event) => {
-    console.log(event.target);
-    event.target.offensive = !event.target.offensive;
+    let offensiveness = event.target.getAttribute('data-offensive');
+    console.log(offensiveness);
+    if (offensiveness === "true") {
+      offensiveness = "false";
+    } else if (offensiveness === "false") {
+      offensiveness = "true";
+    }
   }
 
   render() {
@@ -43,8 +48,20 @@ class Memes extends Component {
 
           <List>
             {this.state.memes.map(meme => (
-              <ListItem key={meme._id}>
-              <img className="rounded" src={meme.imgFilePath} alt="hm" offensive={meme.offensive} onClick={this.toggleOffensive} style={{width: '300px', marginBottom: '20px', border: '2px solid black'}}/>
+              <ListItem key={meme._id} data-offensive={meme.offensive} onClick={this.toggleOffensive}>
+              {
+                meme.offensive ? (
+                  <img src={"../../../../images/triggered.jpg"} data-offensive={meme.offensive.toString()} onClick={this.toggleOffensive}/>
+                ) : (
+                  <img className="rounded" 
+                    src={meme.imgFilePath} 
+                    alt="hm" 
+                    data-offensive={meme.offensive.toString()} 
+                    onClick={this.toggleOffensive} 
+                    style={{width: '300px', marginBottom: '20px', border: '2px solid black'}}
+                  />
+                )
+              }
               </ListItem>
             ))}
             <button onClick={this.loadMemes}>Load more Memes</button>
