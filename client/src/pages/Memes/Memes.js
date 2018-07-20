@@ -54,7 +54,7 @@ class Memes extends Component {
               <ListItem key={meme._id}>
               {
                 meme.offensive ? (
-                  <img src={"../../../../images/triggered.jpg"} data-offensive={meme.offensive} onClick={this.toggleOffensive}/>
+                  <img src={"../../public/images/triggered.jpg"} data-offensive={meme.offensive} onClick={()=> this.toggleOffensive}/>
                 ) : (
                   <img className="rounded" 
                     src={meme.imgFilePath} 

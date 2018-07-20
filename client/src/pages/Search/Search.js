@@ -10,6 +10,7 @@ class Search extends Component {
     memes: [],
     n: 1,
     keyword: "",
+    username: "",
   };
 
   componentDidMount() {
@@ -20,6 +21,11 @@ class Search extends Component {
       const {keyword, value} = event.target;
       this.setState({keyword: value})
   }
+
+  handleUser = (event)=> {
+    const {username, value} = event.target;
+    this.setState({username: value})
+}
 
   loadMemes = () => {
     let n = this.state.n *6;
@@ -42,12 +48,31 @@ class Search extends Component {
     event.target.offensive = !event.target.offensive;
   }
 
+  searchUser = () => {
+    let n = this.state.n * 6;
+    console.log(`searching for user...`);
+    API.searchUser({ query: n, username: this.state.username})
+      .then(res => {
+        this.setState({ memes: res.data,
+                        n: this.state.n +1
+                      });
+        console.log(this.state.memes);
+      }).catch(err => console.log(err));
+  }
+
   render() {
     return (
       <Container fluid>
 
+      <h4> Search for memes by Tag </h4>
       <input type="text" onChange={this.handleKeywords}/>
         <button onClick={this.loadMemes}> Search </button>
+
+      <br/><br/>
+
+      <h4> Search for memes by User </h4>
+      <input type="text" onChange={this.handleUser}/>
+        <button onClick={this.searchUser}> Search </button>
 
         {this.state.memes.length ? (
 

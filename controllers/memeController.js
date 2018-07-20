@@ -30,6 +30,16 @@ module.exports = {
             .then(dbModel => res.json(dbModel))
             .catch(err => res.status(422).json(err));
     },
+    findByUser: function(req, res) {
+        console.log('searching for');
+        console.log(req.body.username)
+        db.Meme
+            .find({uploadedBy: req.body.username})
+            .limit(req.body.query)
+            .sort({time: -1})
+            .then(dbModel => res.json(dbModel))
+            .catch(err => res.status(422).json(err));
+    },
     create: function(req, res) {
         console.log('new meme loading');
         db.Meme
