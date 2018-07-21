@@ -2,7 +2,7 @@ import axios from "axios";
 
 export default {
     //Gets all memes
-    getMemes: function(data) {
+    getMemes: function (data) {
         console.log(`No Garland I don't dance.`);
         return axios.post("/api/memeRoutes", data);
     },
@@ -13,9 +13,13 @@ export default {
         return axios.post("/api/memeRoutes/search", data);
     },
     // Uploads a meme to the database
-    uploadMeme: function(data){
+    uploadMeme: function (data) {
         console.log("adding new meme to database...");
         console.log(data);
         return axios.post("/api/memeRoutes/upload", data);
+    },
+    toggleLike: function (data) {
+        console.log("updating like for" + data);
+        return axios.put("/api/memeRoutes/like", data);
     }
 };

@@ -17,8 +17,8 @@ import React, { Component } from "react";
 
 
 class LikeButton extends Component {
-    constructor() {
-        super();
+    constructor(props) {
+        super(props);
         this.state = {
             liked: false
         };
@@ -36,7 +36,7 @@ class LikeButton extends Component {
         const label = this.state.liked ? 'Unlike' : 'Like'
         return (
             <div className="customContainer">
-                <button className="btn btn-primary" onClick={this.handleClick}>
+                <button className="btn btn-primary" onClick={this.props.onClick}>
                     {label}</button>
                 <p>
                     you {text} this. Click to toggle.

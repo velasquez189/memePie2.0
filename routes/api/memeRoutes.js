@@ -19,4 +19,7 @@ router.route("/search")
 router.route("/upload")
     .post(memeController.create);
 
+router.route("/like")
+    .put(memeController.toggleLike);
+
 module.exports = router; 

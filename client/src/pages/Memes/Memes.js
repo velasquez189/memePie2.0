@@ -46,6 +46,14 @@ class Memes extends Component {
     console.log(offensiveness);
   }
 
+  updateLike = id => {
+    var user = localStorage.getItem('CognitoIdentityServiceProvider.18kp0d0foqkulkcf15kab8r4sm.LastAuthUser');
+    console.log(user, id);
+    API.toggleLike({id: id, username: user})
+      .then()
+      .catch(err => console.log(err));
+  }
+
   render() {
     return (
       <Container fluid>
@@ -61,13 +69,15 @@ class Memes extends Component {
                       <img className="rounded"
                         src={meme.imgFilePath}
                         alt="hm"
+                        totalvote={meme.totalVote}
+                        likedby={meme.likedBy}
                         // data-offensive={meme.offensive} 
                         // onClick={this.toggleOffensive} 
                         style={{ width: '300px', marginBottom: '20px', border: '2px solid black' }}
                       />
                     )
                 }
-                <LikeButton />
+                <LikeButton onClick={() => this.updateLike(meme._id)} />
               </ListItem>
             ))}
             <button onClick={this.loadMemes}>Load more Memes</button>
