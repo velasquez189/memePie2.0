@@ -12,6 +12,11 @@ export default {
         console.log(`Searching for memes related to ${data.keywords}`);
         return axios.post("/api/memeRoutes/search", data);
     },
+    searchUser: function (data) {
+        console.log(`Searching for memes by ${data.username}`);
+        return axios.post("/api/memeRoutes/user", data);
+    },
+
     // Uploads a meme to the database
     uploadMeme: function(data){
         console.log("adding new meme to database...");
