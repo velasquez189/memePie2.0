@@ -14,10 +14,10 @@ const Nav = () => (
                     <a className="nav-link" href="/">Dank</a>
                 </li>
                 <li className="nav-item">
-                    <a className="nav-link" href="upload">Upload</a>
+                    <a className="nav-link" href="/upload">Upload</a>
                 </li>
                 <li className="nav-item">
-                    <a className="nav-link" href="search">Search</a>
+                    <a className="nav-link" href="/search">Search</a>
                 </li>
             </ul>
             <p className="user-name">
@@ -28,4 +28,4 @@ const Nav = () => (
     </nav>
 );
 
-export default Nav
+export default Nav 
