@@ -19,7 +19,7 @@ class Search extends Component {
 
   handleKeywords = (event)=> {
       const {keyword, value} = event.target;
-      this.setState({keyword: value})
+      this.setState({keyword: value.toLowerCase()})
   }
 
   handleUser = (event)=> {
