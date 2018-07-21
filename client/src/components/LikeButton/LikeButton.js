@@ -39,7 +39,7 @@ class LikeButton extends Component {
                 <button className="btn btn-primary" onClick={this.props.onClick}>
                     {label}</button>
                 <p>
-                    you {text} this. Click to toggle.
+                   {text}
           </p>
             </div>
         );

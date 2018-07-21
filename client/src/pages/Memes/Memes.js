@@ -3,6 +3,7 @@ import API from "../../utils/API";
 import { Container } from "../../components/Grid";
 import { List, ListItem } from "../../components/List";
 import LikeButton from "../../components/LikeButton";
+import { TagList } from "../../components/TagList/TagList";
 
 
 
@@ -66,6 +67,7 @@ class Memes extends Component {
                   meme.offensive ? (
                     <img src={"../../../../images/triggered.jpg"} data-offensive={meme.offensive} onClick={this.toggleOffensive} />
                   ) : (
+                    <div>
                       <img className="rounded"
                         src={meme.imgFilePath}
                         alt="hm"
@@ -75,10 +77,18 @@ class Memes extends Component {
                         // onClick={this.toggleOffensive} 
                         style={{ width: '300px', marginBottom: '20px', border: '2px solid black' }}
                       />
+                      <p> TAGS: {meme.tags.join(', ')} </p>
+
+                      </div>
+      
                     )
                 }
                 <LikeButton onClick={() => this.updateLike(meme._id)} />
+                <TagList key={meme._id}>
+                </TagList>
+
               </ListItem>
+
             ))}
             <button onClick={this.loadMemes}>Load more Memes</button>
             <br /><br /><br />
