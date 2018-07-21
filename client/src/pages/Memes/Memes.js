@@ -5,7 +5,6 @@ import { List, ListItem } from "../../components/List";
 import LikeButton from "../../components/LikeButton";
 
 
-
 class Memes extends Component {
   state = {
     memes: [],
@@ -32,15 +31,16 @@ class Memes extends Component {
   }
 
   toggleOffensive = (event) => {
-    let offensiveness = event.target["data-offensive"];
+    let offensiveness = event.target.offensive;
     console.log(offensiveness);
     // if (offensiveness == "true") {
     //   offensiveness = "false"
     // } else 
     // if (offensiveness == false) {
-    offensiveness = false;
+    // offensiveness = "false";
     // }
     // offensiveness = !offensiveness;
+    event.target.src = event.target.alt;
     console.log(offensiveness);
   }
 
@@ -64,7 +64,11 @@ class Memes extends Component {
               <ListItem key={meme._id}>
                 {
                   meme.offensive ? (
-                    <img src={"../../../../images/triggered.jpg"} data-offensive={meme.offensive} onClick={this.toggleOffensive} />
+                    <img src={"../../../images/triggered.jpg"}
+                        alt={meme.imgFilePath}
+                        offensive={meme.offensive}
+                        onClick={this.toggleOffensive}
+                        style={{ width: '300px', marginBottom: '20px', border: '2px solid black' }} />
                   ) : (
                       <img className="rounded"
                         src={meme.imgFilePath}

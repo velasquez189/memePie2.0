@@ -79,7 +79,7 @@ class Search extends Component {
           <List>
             {this.state.memes.map(meme => (
               <ListItem key={meme._id}>
-              <img className="rounded" src={meme.imgFilePath} alt="hm" offensive={meme.offensive} onClick={this.toggleOffensive} style={{width: '300px', marginBottom: '20px', border: '2px solid black'}}/>
+              <img className="rounded" src={meme.imgFilePath} alt="hm" data-offensive={meme.offensive} onClick={this.toggleOffensive} style={{width: '300px', marginBottom: '20px', border: '2px solid black'}}/>
               </ListItem>
             ))}
             <button onClick={this.loadMemes}>Load more Memes</button>
