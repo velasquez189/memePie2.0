@@ -1,5 +1,18 @@
 import React, { Component } from "react";
-import API from "../../utils/API";
+
+
+// const LikeButton = props => (
+//     <button {...props} style={{ float: "right", marginBottom: 10 }} className="btn">
+//         {props.children}
+//     </button>
+// );
+
+
+
+
+
+
+
 
 
 
@@ -32,3 +45,5 @@ class LikeButton extends Component {
         );
     }
 }
+
+export default LikeButton;
