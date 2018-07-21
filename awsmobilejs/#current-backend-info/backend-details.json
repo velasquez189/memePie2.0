@@ -101,8 +101,8 @@
 				"lastUpdateRequestID": "7d87ee31-c76a-4e72-a161-67d1f60f5234",
 				"region": "us-east-2",
 				"user-pool-id": "us-east-2_Be1yLKCCo",
-				"user-pools-client-id": "...redacted_611418775...",
-				"user-pools-client-secret": "...redacted_1026594078...",
+				"user-pools-client-id": "1o723kdq6dr7ueprg1ti31q39n",
+				"user-pools-client-secret": "9kb1jfnj6evd56245b925fe8ohbo9aregjjabr4ko1899kfacue",
 				"user-pools-id": "us-east-2_Be1yLKCCo",
 				"user-pools-web-client-id": "18kp0d0foqkulkcf15kab8r4sm"
 			}
