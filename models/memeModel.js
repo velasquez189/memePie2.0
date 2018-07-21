@@ -28,7 +28,10 @@ var memeScheme = new Schema({
     },
     likedBy: {
         type: Array
-    }
+    },
+    dislikedBy: {
+        type: Array
+    },
 })
 
 

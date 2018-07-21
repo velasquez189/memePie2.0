@@ -3,6 +3,7 @@ import API from "../../utils/API";
 import { Container } from "../../components/Grid";
 import { List, ListItem } from "../../components/List";
 import LikeButton from "../../components/LikeButton";
+import downButton from "../../components/downButton";
 
 
 class Memes extends Component {
@@ -51,6 +52,15 @@ class Memes extends Component {
       .then()
       .catch(err => console.log(err));
   }
+
+  updateDislike = id => {
+    var user = localStorage.getItem('CognitoIdentityServiceProvider.18kp0d0foqkulkcf15kab8r4sm.LastAuthUser');
+    console.log(user, id);
+    API.downVote({id: id, username: user})
+      .then()
+      .catch(err => console.log(err));
+  }
+
 
   
 

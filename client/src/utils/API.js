@@ -27,6 +27,10 @@ export default {
         console.log("updating like for" + data);
         return axios.put("/api/memeRoutes/like", data);
     },
+    downVote: function (data) {
+        console.log("This meme ain't for you")
+        return axios.put("/api/memeRoutes/down", data);
+    },
     // addLike: function (data) {
     //     console.log(`adding a vote to the total`);
     //     return axios.put('/api/memeRoutes/add', data);
