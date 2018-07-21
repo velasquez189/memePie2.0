@@ -25,6 +25,9 @@ var memeScheme = new Schema({
     offensive: {
         type: Boolean,
         default: false
+    },
+    likedBy: {
+        type: Array
     }
 })
 
