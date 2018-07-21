@@ -13,5 +13,16 @@ body {
 
 .amplify-form-section {
   width: 300px !important;
+  margin-top: 70px;
+}
+
+.amplify-nav-bar {
+  margin-top: 70px;
+  border: none !important;
+}
+
+.user-name {
+  position: absolute;
+  right: 20px;
 }
 
