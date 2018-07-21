@@ -48,12 +48,12 @@ class Memes extends Component {
   updateLike = id => {
     var user = localStorage.getItem('CognitoIdentityServiceProvider.18kp0d0foqkulkcf15kab8r4sm.LastAuthUser');
     console.log(user, id);
-    API.toggleLike({id: id, username: user})
+    API.toggleLike({ id: id, username: user })
       .then()
       .catch(err => console.log(err));
   }
 
-  
+
 
   render() {
     return (
@@ -65,26 +65,29 @@ class Memes extends Component {
               <ListItem key={meme._id}>
                 {
                   meme.offensive ? (
-                    <img src={"../../../images/triggered.jpg"}
+                    <div>
+                      <img src={"../../../images/triggered.jpg"}
                         alt={meme.imgFilePath}
                         offensive={meme.offensive}
                         onClick={this.toggleOffensive}
                         style={{ width: '300px', marginBottom: '20px', border: '2px solid black' }} />
-                  ) : (
-                    <div>
-                      <img className="rounded"
-                        src={meme.imgFilePath}
-                        alt="hm"
-                        totalvote={meme.totalVote}
-                        likedby={meme.likedBy}
-                        // data-offensive={meme.offensive} 
-                        // onClick={this.toggleOffensive} 
-                        style={{ width: '300px', marginBottom: '20px', border: '2px solid black' }}
-                      />
                       <p> TAGS: {meme.tags.join(', ')} </p>
+                    </div>
+                  ) : (
+                      <div>
+                        <img className="rounded"
+                          src={meme.imgFilePath}
+                          alt="hm"
+                          totalvote={meme.totalVote}
+                          likedby={meme.likedBy}
+                          // data-offensive={meme.offensive} 
+                          // onClick={this.toggleOffensive} 
+                          style={{ width: '300px', marginBottom: '20px', border: '2px solid black' }}
+                        />
+                        <p> TAGS: {meme.tags.join(', ')} </p>
 
                       </div>
-      
+
                     )
                 }
                 <LikeButton onClick={() => this.updateLike(meme._id)} />
