@@ -16,6 +16,10 @@ router.route("/search")
     .get(memeController.findByTag)
     .post(memeController.findByTag);
 
+router.route("/user")
+    .get(memeController.findByUser)
+    .post(memeController.findByUser);
+
 router.route("/upload")
     .post(memeController.create);
 
