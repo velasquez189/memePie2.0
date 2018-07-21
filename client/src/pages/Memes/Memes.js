@@ -34,13 +34,6 @@ class Memes extends Component {
   toggleOffensive = (event) => {
     let offensiveness = event.target.offensive;
     console.log(offensiveness);
-    // if (offensiveness == "true") {
-    //   offensiveness = "false"
-    // } else 
-    // if (offensiveness == false) {
-    // offensiveness = "false";
-    // }
-    // offensiveness = !offensiveness;
     event.target.src = event.target.alt;
     console.log(offensiveness);
   }
