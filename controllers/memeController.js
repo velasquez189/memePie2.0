@@ -30,17 +30,17 @@ module.exports = {
             .then(dbModel => res.json(dbModel))
             .catch(err => res.status(422).json(err));
     },
-    findByUser: function(req, res) {
+    findByUser: function (req, res) {
         console.log('searching for');
         console.log(req.body.username)
         db.Meme
-            .find({uploadedBy: req.body.username})
+            .find({ uploadedBy: req.body.username })
             .limit(req.body.query)
-            .sort({time: -1})
+            .sort({ time: -1 })
             .then(dbModel => res.json(dbModel))
             .catch(err => res.status(422).json(err));
     },
-    create: function(req, res) {
+    create: function (req, res) {
         console.log('new meme loading');
         db.Meme
             .create(req.body)
@@ -51,12 +51,12 @@ module.exports = {
         console.log('changed the like');
         console.log(req.body.id, req.body.username)
         db.Meme
-            .findOneAndUpdate({ _id: req.body.id},
-                                {$push: {likedBy: req.body.username}},
-                                {$inc: {"totalVote": 1}})
-                                // totalVote: totalVote +1
+            .findOneAndUpdate({ _id: req.body.id },
+                                { $inc: { totalVote: 1 },
+                                 $push: { likedBy: req.body.username } },
+            )
             // }, req.body)
             .then(dbModel => res.json(dbModel))
             .catch(err => res.status(422).json(err))
-    }
+    },
 };

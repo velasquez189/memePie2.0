@@ -23,8 +23,6 @@ class Memes extends Component {
       .then(res => {
         this.setState({
           memes: res.data,
-          // uploadedBy: "", 
-          // tags: [],
           n: this.state.n + 1
         });
         console.log(this.state.memes);
@@ -53,6 +51,8 @@ class Memes extends Component {
       .then()
       .catch(err => console.log(err));
   }
+
+  
 
   render() {
     return (

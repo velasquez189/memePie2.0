@@ -26,5 +26,9 @@ export default {
     toggleLike: function (data) {
         console.log("updating like for" + data);
         return axios.put("/api/memeRoutes/like", data);
-    }
+    },
+    // addLike: function (data) {
+    //     console.log(`adding a vote to the total`);
+    //     return axios.put('/api/memeRoutes/add', data);
+    // }
 };
