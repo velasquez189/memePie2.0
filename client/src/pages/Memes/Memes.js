@@ -45,12 +45,15 @@ class Memes extends Component {
     console.log(offensiveness);
   }
 
-  updateLike = id => {
+  updateLike = meme => {
     var user = localStorage.getItem('CognitoIdentityServiceProvider.18kp0d0foqkulkcf15kab8r4sm.LastAuthUser');
-    console.log(user, id);
-    API.toggleLike({ id: id, username: user })
+    console.log(user, meme._id);
+    console.log(meme);
+    if (meme.likedBy.indexOf(user)<0){
+    API.toggleLike({ id: meme._id, username: user })
       .then()
       .catch(err => console.log(err));
+    }else {return;}
   }
 
 
@@ -90,7 +93,7 @@ class Memes extends Component {
 
                     )
                 }
-                <LikeButton onClick={() => this.updateLike(meme._id)} />
+                <LikeButton onClick={() => this.updateLike(meme)} />
                 <TagList key={meme._id}>
                 </TagList>
 
