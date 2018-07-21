@@ -117,7 +117,7 @@ class Upload extends Component {
           <form id="tag-form" >
             <div className="form-group row">
               {/* <label htmlFor="colFormLabelSm" className="galada-fnt col-sm-2 col-form-label col-form-label-sm">Add a Category:</label> */}
-              <div className="col-xs-4">
+              <div className="">
                 <input type="string" className="form-control form-control-sm" id="colFormLabelSm" placeholder="Add tags here" onChange={this.handleInputChange} />
                 Is this meme Offensive? <input type="checkbox" className="offensive" onChange={this.handleCheckbox} /> 
               </div>

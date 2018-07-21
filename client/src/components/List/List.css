@@ -3,3 +3,27 @@
     width: 340px;
     
 }
+
+.list-group {
+    display: inline-table;
+}
+
+@media screen and (min-width: 760px) {
+    .list-group-item {
+        margin-bottom: 20px;
+        width: 600px;
+    }
+    img {
+        width: 500px !important;
+    }
+}
+
+@media screen and (max-width: 340px) {
+    .list-group-item {
+        margin-bottom: 20px;
+        width: 280px;
+    }
+    img {
+        width: 240px !important;
+    }
+}
