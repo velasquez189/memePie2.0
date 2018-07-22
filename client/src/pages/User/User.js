@@ -25,7 +25,7 @@ class User extends Component {
       .then(res => {
         this.setState({
           memes: res.data,
-          //   n: this.state.n + 1
+            n: this.state.n + 1
         });
         console.log(this.state.memes);
       }
