@@ -62,6 +62,7 @@ class Memes extends Component {
                   meme.offensive ? (
                     <div>
                       <img src={"../../../images/triggered.jpg"}
+                        className={"rounded"}
                         alt={meme.imgFilePath}
                         // data-offensive={meme.offensive}
                         onClick={this.toggleOffensive}
