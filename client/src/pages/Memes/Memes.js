@@ -65,6 +65,7 @@ class Memes extends Component {
                 {
                   meme.offensive ? (
                     <div>
+                        <p className="meme-loadedby">uploaded by: {meme.uploadedBy}</p>
                       <img src={"../../../images/triggered.jpg"}
                         className={"rounded"}
                         alt={meme.imgFilePath}
@@ -75,6 +76,8 @@ class Memes extends Component {
                     </div>
                   ) : (
                       <div>
+                        <p className="meme-loadedby">uploaded by: {meme.uploadedBy}</p>
+
                         <img className="rounded"
                           src={meme.imgFilePath}
                           alt="hm"
@@ -97,9 +100,9 @@ class Memes extends Component {
               </ListItem>
 
             ))}
-            <button onClick={this.loadMemes}>Load more Memes
+            <div>
             <Waypoint onEnter={this.loadMemes}></Waypoint>
-            </button>
+            </div>
             <br /><br /><br />
           </List>
         ) : (

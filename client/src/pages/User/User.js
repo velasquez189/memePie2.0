@@ -6,6 +6,7 @@ import LikeButton from "../../components/LikeButton";
 import { TagList } from "../../components/TagList/TagList";
 import DeleteBtn from "../../components/DeleteBtn";
 import Waypoint from "react-waypoint";
+import { withAuthenticator } from 'aws-amplify-react';
 
 
 class User extends Component {
@@ -26,7 +27,7 @@ class User extends Component {
       .then(res => {
         this.setState({
           memes: res.data,
-            n: this.state.n + 1
+          n: this.state.n + 1
         });
         console.log(this.state.memes);
       }
@@ -68,6 +69,7 @@ class User extends Component {
                 {
                   meme.offensive ? (
                     <div>
+                      <p className="meme-loadedby">uploaded by: {meme.uploadedBy}</p>
                       <img src={"../../../images/triggered.jpg"}
                         alt={meme.imgFilePath}
                         // data-offensive={meme.offensive}
@@ -77,6 +79,7 @@ class User extends Component {
                     </div>
                   ) : (
                       <div>
+                        <p className="meme-loadedby">uploaded by: {meme.uploadedBy}</p>
                         <img className="rounded"
                           src={meme.imgFilePath}
                           alt="hm"
@@ -99,9 +102,9 @@ class User extends Component {
               </ListItem>
 
             ))}
-            <button onClick={this.loadMemes}>Load more Memes
+            <div>
             <Waypoint onEnter={this.loadMemes}></Waypoint>
-            </button>
+            </div>
             <br /><br /><br />
           </List>
         ) : (
@@ -112,4 +115,4 @@ class User extends Component {
   }
 };
 
-export default User; 
+export default withAuthenticator(User); 

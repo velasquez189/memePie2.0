@@ -18,26 +18,27 @@ class Search extends Component {
     this.loadMemes();
   }
 
-  handleKeywords = (event)=> {
-      const {keyword, value} = event.target;
-      this.setState({keyword: value.toLowerCase()})
+  handleKeywords = (event) => {
+    const { keyword, value } = event.target;
+    this.setState({ keyword: value.toLowerCase() })
   }
 
-  handleUser = (event)=> {
-    const {username, value} = event.target;
-    this.setState({username: value})
-}
+  handleUser = (event) => {
+    const { username, value } = event.target;
+    this.setState({ username: value })
+  }
 
   loadMemes = () => {
-    let n = this.state.n *6;
+    let n = this.state.n * 6;
     console.log(`Look, Ma. No hands!`);
-    API.searchMemes({query: n, keywords: this.state.keyword})
+    API.searchMemes({ query: n, keywords: this.state.keyword })
       .then(res => {
-        this.setState({ memes: res.data, 
-                        // uploadedBy: "", 
-                        // tags: [],
-                        n: this.state.n +1
-                       });
+        this.setState({
+          memes: res.data,
+          // uploadedBy: "", 
+          // tags: [],
+          n: this.state.n + 1
+        });
         console.log(this.state.memes);
       }
       )
@@ -52,11 +53,12 @@ class Search extends Component {
   searchUser = () => {
     let n = this.state.n * 6;
     console.log(`searching for user...`);
-    API.searchUser({ query: n, username: this.state.username})
+    API.searchUser({ query: n, username: this.state.username })
       .then(res => {
-        this.setState({ memes: res.data,
-                        n: this.state.n +1
-                      });
+        this.setState({
+          memes: res.data,
+          n: this.state.n + 1
+        });
         console.log(this.state.memes);
       }).catch(err => console.log(err));
   }
@@ -65,14 +67,14 @@ class Search extends Component {
     return (
       <Container fluid>
 
-      <h4> Search for memes by Tag </h4>
-      <input type="text" onChange={this.handleKeywords}/>
+        <h4> Search for memes by Tag </h4>
+        <input type="text" onChange={this.handleKeywords} />
         <button onClick={this.loadMemes}> Search </button>
 
-      <br/><br/>
+        <br /><br />
 
-      <h4> Search for memes by User </h4>
-      <input type="text" onChange={this.handleUser}/>
+        <h4> Search for memes by User </h4>
+        <input type="text" onChange={this.handleUser} />
         <button onClick={this.searchUser}> Search </button>
 
         {this.state.memes.length ? (
@@ -80,12 +82,14 @@ class Search extends Component {
           <List>
             {this.state.memes.map(meme => (
               <ListItem key={meme._id}>
-              <img className="rounded" src={meme.imgFilePath} alt="hm" data-offensive={meme.offensive} onClick={this.toggleOffensive} style={{width: '300px', marginBottom: '20px', border: '2px solid black'}}/>
+                <p className="meme-loadedby">uploaded by: {meme.uploadedBy}</p>
+
+                <img className="rounded" src={meme.imgFilePath} alt="hm" data-offensive={meme.offensive} onClick={this.toggleOffensive} style={{ width: '300px', marginBottom: '20px', border: '2px solid black' }} />
               </ListItem>
             ))}
-            <button onClick={this.loadMemes}>Load more Memes\
+            <div>
             <Waypoint onEnter={this.loadMemes}></Waypoint>
-            </button>
+            </div>
             <br /><br /><br />
           </List>
         ) : (
