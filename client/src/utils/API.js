@@ -12,6 +12,12 @@ export default {
         console.log(`Searching for memes related to ${data.keywords}`);
         return axios.post("/api/memeRoutes/search", data);
     },
+
+    getDank: function (data) {
+        console.log(`Getting the dankest memes on the whole flat earth`);
+        return axios.post("/api/memeRoutes/dank", data);
+    },
+
     searchUser: function (data) {
         console.log(`Searching for memes by ${data.username}`);
         return axios.post("/api/memeRoutes/user", data);
@@ -35,4 +41,8 @@ export default {
     //     console.log(`adding a vote to the total`);
     //     return axios.put('/api/memeRoutes/add', data);
     // }
+    deleteMeme: function (id) {
+        console.log(`API deleting ${id}`);
+        return axios.delete("/api/memeRoutes/" + id);
+    }
 };

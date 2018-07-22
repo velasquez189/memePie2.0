@@ -10,7 +10,8 @@ router.route("/fresh")
     .post(memeController.findFresh);
 
 router.route("/dank")
-    .get(memeController.findDank);
+    .get(memeController.findDank)
+    .post(memeController.findDank);
 
 router.route("/search")
     .get(memeController.findByTag)
@@ -18,8 +19,12 @@ router.route("/search")
 
 router.route("/user")
     .get(memeController.findByUser)
-    .post(memeController.findByUser);
+    .post(memeController.findByUser)
+    .delete(memeController.delete);
 
+router.route("/:id")
+    .delete(memeController.delete);
+    
 router.route("/upload")
     .post(memeController.create);
 

@@ -32,15 +32,11 @@ class LikeButton extends Component {
     }
 
     render() {
-        const text = this.state.liked ? 'liked' : 'haven\'t liked';
-        const label = this.state.liked ? 'Unlike' : 'Like'
+        const label = this.state.liked ? 'not dank' : 'DANK'
         return (
             <div className="customContainer">
-                <button className="btn btn-primary" onClick={this.props.onClick}>
+                <button className="btn dank-btn" onClick={this.props.onClick}>
                     {label}</button>
-                <p>
-                    you {text} this. Click to toggle.
-          </p>
             </div>
         );
     }
