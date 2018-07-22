@@ -15,8 +15,9 @@ module.exports = {
     findDank: function (req, res) {
         console.log('dank');
         db.Meme
-            .find(req.query)
-            .sort({ time: 1 })
+            .find({})
+            .limit(req.body.query)
+            .sort({ totalVote: -1 })
             .then(dbModel => res.json(dbModel))
             .catch(err => res.status(422).json(err));
     },
@@ -59,4 +60,13 @@ module.exports = {
             .then(dbModel => res.json(dbModel))
             .catch(err => res.status(422).json(err))
     },
+    delete: function(req, res){
+        console.log(`banishing ${req} to hell`);
+        console.log("andreaaaa");
+        db.Meme
+            .findById({_id: req.params.id})
+            .then(dbModel => dbModel.remove())
+            .then(dbModel => res.json(dbModel))
+            .catch(err => console.log(err))
+    }
 };

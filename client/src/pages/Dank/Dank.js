@@ -7,12 +7,11 @@ import { TagList } from "../../components/TagList/TagList";
 import Waypoint from "react-waypoint";
 
 
-class Memes extends Component {
+class Dank extends Component {
   state = {
     memes: [],
     n: 1
   };
-
 
   componentDidMount() {
     this.loadMemes();
@@ -21,7 +20,7 @@ class Memes extends Component {
   loadMemes = () => {
     let n = this.state.n * 6;
     console.log(`Look, Ma. No hands!`);
-    API.getMemes({ query: n })
+    API.getDank({ query: n })
       .then(res => {
         this.setState({
           memes: res.data,
@@ -43,11 +42,7 @@ class Memes extends Component {
     console.log(meme);
     if (meme.likedBy.indexOf(user) < 0) {
       API.toggleLike({ id: meme._id, username: user })
-        .then(res => {
-          console.log("updated meme with like");
-          this.setState({ n: this.state.n - 1 });
-          this.loadMemes()
-        })
+        .then(res => console.log("updated meme with like"))
         .catch(err => console.log(err));
     } else { return; }
   }
@@ -65,9 +60,8 @@ class Memes extends Component {
                 {
                   meme.offensive ? (
                     <div>
-                        <p className="meme-loadedby">uploaded by: {meme.uploadedBy}</p>
+                      <p className="meme-loadedby">uploaded by: {meme.uploadedBy}</p>
                       <img src={"../../../images/triggered.jpg"}
-                        className={"rounded"}
                         alt={meme.imgFilePath}
                         // data-offensive={meme.offensive}
                         onClick={this.toggleOffensive}
@@ -77,7 +71,6 @@ class Memes extends Component {
                   ) : (
                       <div>
                         <p className="meme-loadedby">uploaded by: {meme.uploadedBy}</p>
-
                         <img className="rounded"
                           src={meme.imgFilePath}
                           alt="hm"
@@ -87,7 +80,7 @@ class Memes extends Component {
                           // onClick={this.toggleOffensive} 
                           style={{ width: '300px', marginBottom: '20px', border: '2px solid black' }}
                         />
-                        <p className='meme-tags rounded'> Tags: {meme.tags.join(', ')} </p>
+                        <p className='meme-tags rounded'> tags: {meme.tags.join(', ')} </p>
 
                       </div>
 
@@ -113,4 +106,4 @@ class Memes extends Component {
   }
 };
 
-export default Memes; 
+export default Dank; 

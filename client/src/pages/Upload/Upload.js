@@ -1,9 +1,9 @@
 import React, { Component } from "react";
 import API from "../../utils/API";
 import { Container } from "../../components/Grid";
-import { Amplify, Storage } from 'aws-amplify';
+import { Storage } from 'aws-amplify';
 // import awsmobile from '../../aws-exports';
-import { withAuthenticator, Greetings, S3Album, S3Image, Authenticator } from 'aws-amplify-react';
+import { withAuthenticator } from 'aws-amplify-react';
 require("babel-core/register");
 require("babel-polyfill");
 
@@ -117,8 +117,10 @@ class Upload extends Component {
           <form id="tag-form" >
             <div className="form-group row">
               {/* <label htmlFor="colFormLabelSm" className="galada-fnt col-sm-2 col-form-label col-form-label-sm">Add a Category:</label> */}
-              <div className="col-xs-4">
-                <input type="string" className="form-control form-control-sm" id="colFormLabelSm" placeholder="Add tags here" onChange={this.handleInputChange} />
+              <div className="">
+              <p className="rules">Tags:</p>
+              <p className="rules">MAKE THEM ONE WORD IF YOU WANT PEOPLE TO FIND THEM...</p>
+                <input type="string" className="form-control form-control-sm" id="colFormLabelSm" placeholder="Seperate them with commas!" onChange={this.handleInputChange} />
                 Is this meme Offensive? <input type="checkbox" className="offensive" onChange={this.handleCheckbox} /> 
               </div>
             </div>
