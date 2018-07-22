@@ -115,4 +115,4 @@ class User extends Component {
   }
 };
 
-export default withAuthenticator(User); 
+export default withAuthenticator(User, {includeGreetings: true}); 
