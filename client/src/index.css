@@ -55,3 +55,9 @@ button, input {
   overflow: visible;
   background-color: white;
 }
+
+.rules {
+  width: 70%;
+  margin-left: auto;
+  margin-right: auto;
+}
