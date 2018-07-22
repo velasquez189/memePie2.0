@@ -37,4 +37,8 @@ export default {
     //     console.log(`adding a vote to the total`);
     //     return axios.put('/api/memeRoutes/add', data);
     // }
+    deleteMeme: function(data) {
+        console.log(`Banishing ${data} to hell`);
+        return axios.delete("/api/memeRoutes/delete", data)
+    }
 };

@@ -4,9 +4,10 @@ import { Container } from "../../components/Grid";
 import { List, ListItem } from "../../components/List";
 import LikeButton from "../../components/LikeButton";
 import { TagList } from "../../components/TagList/TagList";
+import DeleteBtn from "../../components/DeleteBtn"
 
 
-class Memes extends Component {
+class User extends Component {
   state = {
     memes: [],
     n: 1
@@ -17,13 +18,14 @@ class Memes extends Component {
   }
 
   loadMemes = () => {
+    var user = localStorage.getItem('CognitoIdentityServiceProvider.18kp0d0foqkulkcf15kab8r4sm.LastAuthUser');
     let n = this.state.n * 6;
     console.log(`Look, Ma. No hands!`);
-    API.getMemes({ query: n })
+    API.searchUser({query: n, username: user})
       .then(res => {
         this.setState({
           memes: res.data,
-          n: this.state.n + 1
+        //   n: this.state.n + 1
         });
         console.log(this.state.memes);
       }
@@ -46,6 +48,11 @@ class Memes extends Component {
     }else {return;}
   }
 
+  handleDelete = meme => {
+    API.deleteMeme(meme)
+        .then(res => this.loadMemes())
+        .catch(err => console.log(err));
+  }
 
 
   render() {
@@ -77,13 +84,14 @@ class Memes extends Component {
                           // onClick={this.toggleOffensive} 
                           style={{ width: '300px', marginBottom: '20px', border: '2px solid black' }}
                         />
-                        <p className='meme-tags rounded'> Tags: {meme.tags.join(', ')} </p>
+                        <p className='meme-tags rounded'> tags: {meme.tags.join(', ')} </p>
 
                       </div>
 
                     )
                 }
                 <LikeButton onClick={() => this.updateLike(meme)} />
+                <DeleteBtn onClick={() => this.handleDelete(meme)} />
                 <TagList key={meme._id}>
                 </TagList>
 
@@ -101,4 +109,4 @@ class Memes extends Component {
   }
 };
 
-export default Memes; 
+export default User; 
