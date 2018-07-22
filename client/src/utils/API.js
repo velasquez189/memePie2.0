@@ -37,8 +37,8 @@ export default {
     //     console.log(`adding a vote to the total`);
     //     return axios.put('/api/memeRoutes/add', data);
     // }
-    deleteMeme: function (data) {
-        console.log(`API deleting ${data}`);
-        return axios.delete("/api/memeRoutes/" + data);
+    deleteMeme: function (id) {
+        console.log(`API deleting ${id}`);
+        return axios.delete("/api/memeRoutes/" + id);
     }
 };

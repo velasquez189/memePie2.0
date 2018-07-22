@@ -61,7 +61,7 @@ module.exports = {
             .catch(err => res.status(422).json(err))
     },
     delete: function(req, res){
-        console.log(`banishing ${req.params.id} to hell`);
+        console.log(`banishing ${req} to hell`);
         console.log("andreaaaa");
         db.Meme
             .findById({_id: req.params.id})

@@ -1,9 +1,9 @@
 import React, { Component } from "react";
 import API from "../../utils/API";
 import { Container } from "../../components/Grid";
-import { Amplify, Storage } from 'aws-amplify';
+import { Storage } from 'aws-amplify';
 // import awsmobile from '../../aws-exports';
-import { withAuthenticator, Greetings, S3Album, S3Image, Authenticator } from 'aws-amplify-react';
+import { withAuthenticator } from 'aws-amplify-react';
 require("babel-core/register");
 require("babel-polyfill");
 
