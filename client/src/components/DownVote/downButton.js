@@ -6,7 +6,7 @@ class downButton extends Component {
         this.state = {
             downVote: false
         };
-        this.handleclick = this.handleclick.bind(this);
+        this.handleClick = this.handleClick.bind(this);
     }
 
     handleClick() {
