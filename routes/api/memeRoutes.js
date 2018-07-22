@@ -19,7 +19,8 @@ router.route("/search")
 
 router.route("/user")
     .get(memeController.findByUser)
-    .post(memeController.findByUser);
+    .post(memeController.findByUser)
+    .delete(memeController.delete);
 
 router.route("/upload")
     .post(memeController.create);

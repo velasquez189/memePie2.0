@@ -48,10 +48,12 @@ class User extends Component {
     }else {return;}
   }
 
-  handleDelete = meme => {
-    API.deleteMeme(meme)
+  handleDelete = id => {
+    console.log(`Deleting ${id}`);
+    API.deleteMeme(id)
         .then(res => this.loadMemes())
         .catch(err => console.log(err));
+    console.log("deleted");
   }
 
 
@@ -91,7 +93,7 @@ class User extends Component {
                     )
                 }
                 <LikeButton onClick={() => this.updateLike(meme)} />
-                <DeleteBtn onClick={() => this.handleDelete(meme)} />
+                <DeleteBtn onClick={() => this.handleDelete(meme._id)} />
                 <TagList key={meme._id}>
                 </TagList>
 

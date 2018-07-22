@@ -4,16 +4,19 @@ import "./Footer.css";
 
 const Footer = () => (
     <div className="container navbar-collapse d-block d-lg-none">
-        <nav className="navbar fixed-bottom navbar-light bg-light justify-content-between ">
+        <nav className="row navbar fixed-bottom navbar-light bg-light justify-content-between ">
             <ul className="nav nav-pills ">
-                <li className="nav-item">
-                    <a className="nav-link footer-link" href="/">Dank</a>
+                <li className="col-xs-3 nav-item">
+                    <a className="nav-link footer-link" href="dank">Dank</a>
                 </li>
-                <li className="nav-item">
-                    <a className="nav-link footer-link" href="upload">Upload</a>
+                <li className="col-xs-3 nav-item">
+                    <a className="nav-link footer-link" href="upload">Upld</a>
                 </li>
-                <li className="nav-item">
-                    <a className="nav-link footer-link" href="search">Search</a>
+                <li className="col-xs-3 nav-item">
+                    <a className="nav-link footer-link" href="search">Srch</a>
+                </li>
+                <li className="col-xs-3 nav-item">
+                    <a className="nav-link footer-link" href="user">Usr</a>
                 </li>
 
             </ul>

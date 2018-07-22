@@ -39,6 +39,6 @@ export default {
     // }
     deleteMeme: function(data) {
         console.log(`Banishing ${data} to hell`);
-        return axios.delete("/api/memeRoutes/delete", data)
+        return axios.delete("/api/memeRoutes/user", data)
     }
 };
