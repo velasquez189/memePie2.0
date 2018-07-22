@@ -80,7 +80,7 @@ class Memes extends Component {
                           // onClick={this.toggleOffensive} 
                           style={{ width: '300px', marginBottom: '20px', border: '2px solid black' }}
                         />
-                        <p className='meme-tags rounded'> tags: {meme.tags.join(', ')} </p>
+                        <p className='meme-tags rounded'> Tags: {meme.tags.join(', ')} </p>
 
                       </div>
 
