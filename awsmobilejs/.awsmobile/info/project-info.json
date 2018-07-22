@@ -6,7 +6,7 @@
 	"LastNPMInstallTime": "",
 	"FrontendLastBuildTime": "",
 	"LastPublishTime": "",
-	"BackendLastSyncTime": "2018-07-16-22-32-34",
+	"BackendLastSyncTime": "2018-07-21-13-27-26",
 	"BackendLastBuildTime": "2018-07-16-22-31-55",
 	"BackendLastPushTime": "2018-07-16-22-31-56",
 	"BackendProjectID": "ebff12bd-5031-4f6d-990d-2648fa8d91c0",
@@ -14,6 +14,6 @@
 	"BackendProjectConsoleUrl": "https://console.aws.amazon.com/mobilehub/home#/ebff12bd-5031-4f6d-990d-2648fa8d91c0/build",
 	"BackendProjectCreationTime": "2018-07-11T17:15:47.185Z",
 	"BackendProjectLastUpdatedTime": "2018-07-17T02:31:55.873Z",
-	"BackendLastSyncToDevTime": "2018-07-16-22-32-44",
+	"BackendLastSyncToDevTime": "2018-07-21-13-35-17",
 	"start:dev": "concurrently \"nodemon --ignore 'client/*'\" \"npm run client\""
 }
