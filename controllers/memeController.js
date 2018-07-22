@@ -33,10 +33,10 @@ module.exports = {
     },
     findByUser: function (req, res) {
         console.log('searching for');
-        console.log(req.params.username)
+        console.log(req.body.username)
         db.Meme
-            .find({ uploadedBy: req.params.username })
-            // .limit(req.body.query)
+            .find({ uploadedBy: req.body.username })
+            .limit(req.body.query)
             .sort({ time: -1 })
             .then(dbModel => res.json(dbModel))
             .catch(err => res.status(422).json(err));
@@ -60,4 +60,11 @@ module.exports = {
             .then(dbModel => res.json(dbModel))
             .catch(err => res.status(422).json(err))
     },
+    delete: function(req, res){
+        console.log(`banishing meme to hell`)
+        db.Meme
+            .findById({_id: req.body._id})
+            .then(dbModel => dbModel.remove())
+            .catch(err => console.log(err))
+    }
 };

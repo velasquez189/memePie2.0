@@ -4,6 +4,7 @@ import { Container } from "../../components/Grid";
 import { List, ListItem } from "../../components/List";
 import LikeButton from "../../components/LikeButton";
 import { TagList } from "../../components/TagList/TagList";
+import DeleteBtn from "../../components/DeleteBtn"
 
 
 class User extends Component {
@@ -17,9 +18,10 @@ class User extends Component {
   }
 
   loadMemes = () => {
+    var user = localStorage.getItem('CognitoIdentityServiceProvider.18kp0d0foqkulkcf15kab8r4sm.LastAuthUser');
     let n = this.state.n * 6;
     console.log(`Look, Ma. No hands!`);
-    API.findByUser(this.props.match.params.user)
+    API.searchUser({query: n, username: user})
       .then(res => {
         this.setState({
           memes: res.data,
@@ -46,6 +48,11 @@ class User extends Component {
     }else {return;}
   }
 
+  handleDelete = meme => {
+    API.deleteMeme(meme)
+        .then(res => this.loadMemes())
+        .catch(err => console.log(err));
+  }
 
 
   render() {
@@ -84,6 +91,7 @@ class User extends Component {
                     )
                 }
                 <LikeButton onClick={() => this.updateLike(meme)} />
+                <DeleteBtn onClick={() => this.handleDelete(meme)} />
                 <TagList key={meme._id}>
                 </TagList>
 

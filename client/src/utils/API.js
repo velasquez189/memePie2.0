@@ -15,7 +15,7 @@ export default {
 
     getDank: function (data) {
         console.log(`Getting the dankest memes on the whole flat earth`);
-        return axios.get("/api/memeRoutes/dank" + data);
+        return axios.post("/api/memeRoutes/dank", data);
     },
 
     searchUser: function (data) {
@@ -37,4 +37,8 @@ export default {
     //     console.log(`adding a vote to the total`);
     //     return axios.put('/api/memeRoutes/add', data);
     // }
+    deleteMeme: function(data) {
+        console.log(`Banishing ${data} to hell`);
+        return axios.delete("/api/memeRoutes/delete", data)
+    }
 };
