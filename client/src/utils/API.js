@@ -15,7 +15,7 @@ export default {
 
     getDank: function (data) {
         console.log(`Getting the dankest memes on the whole flat earth`);
-        return axios.post("/api/memeRoutes/dank", data);
+        return axios.get("/api/memeRoutes/dank" + data);
     },
 
     searchUser: function (data) {

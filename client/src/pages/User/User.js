@@ -6,7 +6,7 @@ import LikeButton from "../../components/LikeButton";
 import { TagList } from "../../components/TagList/TagList";
 
 
-class Memes extends Component {
+class User extends Component {
   state = {
     memes: [],
     n: 1
@@ -19,11 +19,11 @@ class Memes extends Component {
   loadMemes = () => {
     let n = this.state.n * 6;
     console.log(`Look, Ma. No hands!`);
-    API.getMemes({ query: n })
+    API.findByUser(this.props.match.params.user)
       .then(res => {
         this.setState({
           memes: res.data,
-          n: this.state.n + 1
+        //   n: this.state.n + 1
         });
         console.log(this.state.memes);
       }
@@ -101,4 +101,4 @@ class Memes extends Component {
   }
 };
 
-export default Memes; 
+export default User; 

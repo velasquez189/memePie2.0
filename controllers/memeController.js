@@ -33,10 +33,10 @@ module.exports = {
     },
     findByUser: function (req, res) {
         console.log('searching for');
-        console.log(req.body.username)
+        console.log(req.params.username)
         db.Meme
-            .find({ uploadedBy: req.body.username })
-            .limit(req.body.query)
+            .find({ uploadedBy: req.params.username })
+            // .limit(req.body.query)
             .sort({ time: -1 })
             .then(dbModel => res.json(dbModel))
             .catch(err => res.status(422).json(err));
