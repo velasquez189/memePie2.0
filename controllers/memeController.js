@@ -15,8 +15,9 @@ module.exports = {
     findDank: function (req, res) {
         console.log('dank');
         db.Meme
-            .find(req.query)
-            .sort({ time: 1 })
+            .find({})
+            .limit(req.body.query)
+            .sort({ totalVote: -1 })
             .then(dbModel => res.json(dbModel))
             .catch(err => res.status(422).json(err));
     },

@@ -10,7 +10,8 @@ router.route("/fresh")
     .post(memeController.findFresh);
 
 router.route("/dank")
-    .get(memeController.findDank);
+    .get(memeController.findDank)
+    .post(memeController.findDank);
 
 router.route("/search")
     .get(memeController.findByTag)

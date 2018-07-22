@@ -5,6 +5,7 @@ import Nav from './components/Nav/Nav';
 import Footer from './components/Footer/Footer';
 import Upload from './pages/Upload';
 import Search from './pages/Search';
+import Dank from './pages/Dank';
 
 const App = () => (
   <Router>
@@ -16,6 +17,8 @@ const App = () => (
         <Route exact path="/memes" component={Memes} />
         <Route exact path="/upload" component={Upload} />
         <Route exact path="/search" component={Search} />
+        <Route exact path="/dank" component={Dank} />
+        {/* <Route exact path="/:user" component={User} /> */}
       </Switch>
       <Footer />
     </div>

@@ -6,7 +6,7 @@ import LikeButton from "../../components/LikeButton";
 import { TagList } from "../../components/TagList/TagList";
 
 
-class Memes extends Component {
+class Dank extends Component {
   state = {
     memes: [],
     n: 1
@@ -19,7 +19,7 @@ class Memes extends Component {
   loadMemes = () => {
     let n = this.state.n * 6;
     console.log(`Look, Ma. No hands!`);
-    API.getMemes({ query: n })
+    API.getDank({ query: n })
       .then(res => {
         this.setState({
           memes: res.data,
@@ -32,10 +32,7 @@ class Memes extends Component {
   }
 
   toggleOffensive = (event) => {
-    // let offensiveness = event.target.offensive;
-    // console.log(offensiveness);
     event.target.src = event.target.alt;
-    // console.log(offensiveness);
   }
 
   updateLike = meme => {
@@ -46,7 +43,7 @@ class Memes extends Component {
     API.toggleLike({ id: meme._id, username: user })
       .then(res => console.log("updated meme with like"))
       .catch(err => console.log(err));
-    }else {return;}
+    } else {return;}
   }
 
 
@@ -80,7 +77,7 @@ class Memes extends Component {
                           // onClick={this.toggleOffensive} 
                           style={{ width: '300px', marginBottom: '20px', border: '2px solid black' }}
                         />
-                        <p className='meme-tags rounded'> Tags: {meme.tags.join(', ')} </p>
+                        <p className='meme-tags rounded'> tags: {meme.tags.join(', ')} </p>
 
                       </div>
 
@@ -104,4 +101,4 @@ class Memes extends Component {
   }
 };
 
-export default Memes; 
+export default Dank; 
