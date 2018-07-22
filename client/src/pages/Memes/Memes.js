@@ -41,7 +41,9 @@ class Memes extends Component {
     console.log(meme);
     if (meme.likedBy.indexOf(user)<0){
     API.toggleLike({ id: meme._id, username: user })
-      .then(res => console.log("updated meme with like"))
+      .then(res => {console.log("updated meme with like");
+                   this.setState({n: this.state.n - 1});
+                   this.loadMemes()})
       .catch(err => console.log(err));
     }else {return;}
   }

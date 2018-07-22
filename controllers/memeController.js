@@ -61,10 +61,10 @@ module.exports = {
             .catch(err => res.status(422).json(err))
     },
     delete: function(req, res){
-        console.log(`banishing ${req.body.id} to hell`);
+        console.log(`banishing ${req} to hell`);
         console.log("andreaaaa");
         db.Meme
-            .findById({_id: req.body.id})
+            .findById({_id: req.params.id})
             .then(dbModel => dbModel.remove())
             .then(dbModel => res.json(dbModel))
             .catch(err => console.log(err))

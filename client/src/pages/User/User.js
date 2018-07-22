@@ -21,11 +21,11 @@ class User extends Component {
     var user = localStorage.getItem('CognitoIdentityServiceProvider.18kp0d0foqkulkcf15kab8r4sm.LastAuthUser');
     let n = this.state.n * 6;
     console.log(`Look, Ma. No hands!`);
-    API.searchUser({query: n, username: user})
+    API.searchUser({ query: n, username: user })
       .then(res => {
         this.setState({
           memes: res.data,
-        //   n: this.state.n + 1
+            n: this.state.n + 1
         });
         console.log(this.state.memes);
       }
@@ -41,21 +41,20 @@ class User extends Component {
     var user = localStorage.getItem('CognitoIdentityServiceProvider.18kp0d0foqkulkcf15kab8r4sm.LastAuthUser');
     console.log(user, meme._id);
     console.log(meme);
-    if (meme.likedBy.indexOf(user)<0){
-    API.toggleLike({ id: meme._id, username: user })
-      .then(res => console.log("updated meme with like"))
-      .catch(err => console.log(err));
-    }else {return;}
+    if (meme.likedBy.indexOf(user) < 0) {
+      API.toggleLike({ id: meme._id, username: user })
+        .then(res => console.log("updated meme with like"))
+        .catch(err => console.log(err));
+    } else { return; }
   }
 
   handleDelete = id => {
-    console.log(`Deleting ${id}`);
+    // +    console.log(`Deleting ${id}`);
     API.deleteMeme(id)
-        .then(res => this.loadMemes())
-        .catch(err => console.log(err));
+      .then(res => this.loadMemes())
+      .catch(err => console.log(err));
     console.log("deleted");
   }
-
 
   render() {
     return (
@@ -73,7 +72,7 @@ class User extends Component {
                         // data-offensive={meme.offensive}
                         onClick={this.toggleOffensive}
                         style={{ width: '300px', marginBottom: '20px', border: '2px solid black' }} />
-                        <p className='meme-tags rounded'> tags: {meme.tags.join(', ')} </p>
+                      <p className='meme-tags rounded'> tags: {meme.tags.join(', ')} </p>
                     </div>
                   ) : (
                       <div>
@@ -96,7 +95,6 @@ class User extends Component {
                 <DeleteBtn onClick={() => this.handleDelete(meme._id)} />
                 <TagList key={meme._id}>
                 </TagList>
-
               </ListItem>
 
             ))}

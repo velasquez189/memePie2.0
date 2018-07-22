@@ -1,5 +1,5 @@
 import React from 'react';
-import "./Footer.css"; 
+import "./Footer.css";
 
 
 const Footer = () => (
@@ -18,7 +18,6 @@ const Footer = () => (
                 <li className="col-xs-3 nav-item">
                     <a className="nav-link footer-link" href="user">Usr</a>
                 </li>
-
             </ul>
         </nav>
     </div>

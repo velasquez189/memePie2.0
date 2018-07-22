@@ -22,6 +22,9 @@ router.route("/user")
     .post(memeController.findByUser)
     .delete(memeController.delete);
 
+router.route("/:id")
+    .delete(memeController.delete);
+    
 router.route("/upload")
     .post(memeController.create);
 
