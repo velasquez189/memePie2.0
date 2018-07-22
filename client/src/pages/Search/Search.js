@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import API from "../../utils/API";
 import { Container } from "../../components/Grid";
 import { List, ListItem } from "../../components/List";
+import Waypoint from "react-waypoint";
 
 
 
@@ -82,7 +83,9 @@ class Search extends Component {
               <img className="rounded" src={meme.imgFilePath} alt="hm" data-offensive={meme.offensive} onClick={this.toggleOffensive} style={{width: '300px', marginBottom: '20px', border: '2px solid black'}}/>
               </ListItem>
             ))}
-            <button onClick={this.loadMemes}>Load more Memes</button>
+            <button onClick={this.loadMemes}>Load more Memes\
+            <Waypoint onEnter={this.loadMemes}></Waypoint>
+            </button>
             <br /><br /><br />
           </List>
         ) : (

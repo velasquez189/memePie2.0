@@ -4,7 +4,8 @@ import { Container } from "../../components/Grid";
 import { List, ListItem } from "../../components/List";
 import LikeButton from "../../components/LikeButton";
 import { TagList } from "../../components/TagList/TagList";
-import DeleteBtn from "../../components/DeleteBtn"
+import DeleteBtn from "../../components/DeleteBtn";
+import Waypoint from "react-waypoint";
 
 
 class User extends Component {
@@ -98,7 +99,9 @@ class User extends Component {
               </ListItem>
 
             ))}
-            <button onClick={this.loadMemes}>Load more Memes</button>
+            <button onClick={this.loadMemes}>Load more Memes
+            <Waypoint onEnter={this.loadMemes}></Waypoint>
+            </button>
             <br /><br /><br />
           </List>
         ) : (

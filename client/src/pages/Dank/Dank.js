@@ -4,6 +4,7 @@ import { Container } from "../../components/Grid";
 import { List, ListItem } from "../../components/List";
 import LikeButton from "../../components/LikeButton";
 import { TagList } from "../../components/TagList/TagList";
+import Waypoint from "react-waypoint";
 
 
 class Dank extends Component {
@@ -39,11 +40,11 @@ class Dank extends Component {
     var user = localStorage.getItem('CognitoIdentityServiceProvider.18kp0d0foqkulkcf15kab8r4sm.LastAuthUser');
     console.log(user, meme._id);
     console.log(meme);
-    if (meme.likedBy.indexOf(user)<0){
-    API.toggleLike({ id: meme._id, username: user })
-      .then(res => console.log("updated meme with like"))
-      .catch(err => console.log(err));
-    } else {return;}
+    if (meme.likedBy.indexOf(user) < 0) {
+      API.toggleLike({ id: meme._id, username: user })
+        .then(res => console.log("updated meme with like"))
+        .catch(err => console.log(err));
+    } else { return; }
   }
 
 
@@ -64,7 +65,7 @@ class Dank extends Component {
                         // data-offensive={meme.offensive}
                         onClick={this.toggleOffensive}
                         style={{ width: '300px', marginBottom: '20px', border: '2px solid black' }} />
-                        <p className='meme-tags rounded'> tags: {meme.tags.join(', ')} </p>
+                      <p className='meme-tags rounded'> tags: {meme.tags.join(', ')} </p>
                     </div>
                   ) : (
                       <div>
@@ -90,7 +91,9 @@ class Dank extends Component {
               </ListItem>
 
             ))}
-            <button onClick={this.loadMemes}>Load more Memes</button>
+            <button onClick={this.loadMemes}>Load more Memes
+            <Waypoint onEnter={this.loadMemes}></Waypoint>
+            </button>
             <br /><br /><br />
           </List>
         ) : (
