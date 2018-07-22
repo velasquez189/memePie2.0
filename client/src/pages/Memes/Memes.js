@@ -32,10 +32,7 @@ class Memes extends Component {
   }
 
   toggleOffensive = (event) => {
-    // let offensiveness = event.target.offensive;
-    // console.log(offensiveness);
     event.target.src = event.target.alt;
-    // console.log(offensiveness);
   }
 
   updateLike = meme => {
@@ -44,7 +41,9 @@ class Memes extends Component {
     console.log(meme);
     if (meme.likedBy.indexOf(user)<0){
     API.toggleLike({ id: meme._id, username: user })
-      .then(res => console.log("updated meme with like"))
+      .then(res => {console.log("updated meme with like");
+                   this.setState({n: this.state.n - 1});
+                   this.loadMemes()})
       .catch(err => console.log(err));
     }else {return;}
   }
