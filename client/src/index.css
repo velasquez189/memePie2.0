@@ -26,6 +26,21 @@ body {
   text-align: center !important;
 }
 
+.amplify-section-header, .amplify-section-footer, .amplify-a {
+  color: black !important;
+  background-color: white !important;
+  border: none !important;
+  font-family: 'Galada', cursive;
+  font-size: auto;
+}
+
+.amplify-a, .amplify-nav-button, .amplify-nav-item {
+  font-family: 'Galada', cursive;
+}
+
+
+
+
 .user-name {
   position: absolute;
   right: 20px;
