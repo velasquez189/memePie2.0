@@ -52,6 +52,10 @@ class Memes extends Component {
     } else { return; }
   }
 
+  toggleOffensive = (event) => {
+    console.log(event.target);
+    event.target.offensive = !event.target.offensive;
+  }
 
 
   render() {
@@ -65,7 +69,7 @@ class Memes extends Component {
                 {
                   meme.offensive ? (
                     <div>
-                        <p className="meme-loadedby">Uploaded By: {meme.uploadedBy}</p>
+                      <p className="meme-loadedby">Uploaded By: {meme.uploadedBy}</p>
                       <img src={"../../../images/triggered.png"}
                         className={"rounded"}
                         alt={meme.imgFilePath}
@@ -101,7 +105,7 @@ class Memes extends Component {
 
             ))}
             <div>
-            <Waypoint onEnter={this.loadMemes}></Waypoint>
+              <Waypoint onEnter={this.loadMemes}></Waypoint>
             </div>
             <br /><br /><br />
           </List>
