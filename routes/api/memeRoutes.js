@@ -32,7 +32,7 @@ router.route("/like")
     .put(memeController.toggleLike);
     
 router.route("/down")
-    .put(memeController.downButton);
+    .put(memeController.downVote);
 
 
-module.exports = router; 
+module.exports = router;  

@@ -3,12 +3,9 @@ import API from "../../utils/API";
 import { Container } from "../../components/Grid";
 import { List, ListItem } from "../../components/List";
 import LikeButton from "../../components/LikeButton";
-<<<<<<< HEAD
-import downButton from "../../components/downButton";
-=======
+import DownButton from "../../components/DownButton";
 import { TagList } from "../../components/TagList/TagList";
 import Waypoint from "react-waypoint";
->>>>>>> development
 
 
 class Memes extends Component {
@@ -56,13 +53,19 @@ class Memes extends Component {
     } else { return; }
   }
 
-  updateDislike = id => {
+  updateDislike = meme => {
     var user = localStorage.getItem('CognitoIdentityServiceProvider.18kp0d0foqkulkcf15kab8r4sm.LastAuthUser');
-    console.log(user, id);
-    API.downVote({id: id, username: user})
-      .then()
+    console.log(user, meme._id);
+    if (meme.dislikedBy.indexOf(user) < 0) {
+    API.downVote({id: meme._id, username: user })
+      .then(res => {
+        console.log("updated meme with down vote");
+        this.setState({ n: this.state.n -1 });
+        this.loadMemes()
+      })
       .catch(err => console.log(err));
-  }
+  } else { return; }
+}
 
 
   render() {
@@ -105,9 +108,10 @@ class Memes extends Component {
                     )
                 }
                 <LikeButton onClick={() => this.updateLike(meme)} />
+                <DownButton onClick={() => this.updateDislike(meme)} />
                 <TagList key={meme._id}>
                 </TagList>
-
+                
               </ListItem>
 
             ))}
