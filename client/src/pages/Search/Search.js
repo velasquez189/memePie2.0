@@ -67,17 +67,17 @@ class Search extends Component {
   render() {
     return (
       <Container fluid>
-
-        <h4> Search for memes by Tag </h4>
-        <input type="text" onChange={this.handleKeywords} />
-        <button onClick={this.loadMemes}> Search </button>
+<form>
+        <h4> Search for memes by tag </h4>
+        <input type="text" className="form-control" onChange={this.handleKeywords} />
+        <button type='submit' className='btn' onClick={this.loadMemes}> Search </button>
 
         <br /><br />
 
-        <h4> Search for memes by User </h4>
-        <input type="text" onChange={this.handleUser} />
-        <button onClick={this.searchUser}> Search </button>
-
+        <h4> Search for memes by user </h4>
+        <input type="text" className="form-control" onChange={this.handleUser} />
+        <button type='submit' className='btn' onClick={this.searchUser}> Search </button>
+</form>
         {this.state.memes.length ? (
 
           <List>

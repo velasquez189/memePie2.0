@@ -125,7 +125,7 @@ class Upload extends Component {
               <input type="string" className="form-control form-control-sm tags-text" id="colFormLabelSm" placeholder="Seperate them with commas!" onChange={this.handleInputChange} />
             <br />
               <div className='rules'>
-                Is this meme Offensive? <input type="checkbox" className="offensive" onChange={this.handleCheckbox} />
+                IS THIS MEME OFFENSIVE? <input type="checkbox" className="offensive" onChange={this.handleCheckbox} />
               </div>
             </div>
           </div>
