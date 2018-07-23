@@ -118,14 +118,19 @@ class Upload extends Component {
           <div className="form-group row">
             {/* <label htmlFor="colFormLabelSm" className="galada-fnt col-sm-2 col-form-label col-form-label-sm">Add a Category:</label> */}
             <div className="">
+              <br />
               <div className="rules">Tags:</div>
               <div className="rules">MAKE THEM ONE WORD IF YOU WANT PEOPLE TO FIND THEM...</div>
-              <input type="string" className="form-control form-control-sm" id="colFormLabelSm" placeholder="Seperate them with commas!" onChange={this.handleInputChange} />
-              Is this meme Offensive? <input type="checkbox" className="offensive" onChange={this.handleCheckbox} />
+              <br />
+              <input type="string" className="form-control form-control-sm tags-text" id="colFormLabelSm" placeholder="Seperate them with commas!" onChange={this.handleInputChange} />
+            <br />
+              <div className='rules'>
+                Is this meme Offensive? <input type="checkbox" className="offensive" onChange={this.handleCheckbox} />
+              </div>
             </div>
           </div>
           <div>
-            <button id="addphoto" onClick={this.mongoUpload}> Add Photo </button>
+            <button className='btn' id="addphoto" onClick={this.mongoUpload}> Add Photo </button>
           </div>
         </form>
         {/* </ Authenticator> */}
