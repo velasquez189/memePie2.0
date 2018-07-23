@@ -65,7 +65,7 @@ input#photoupload {
   margin-left: 10px;
 }
 
-.dank-btn:hover, .dank-btn:focus, .dank-btn:active {
+.dank-btn:hover, .dank-btn:focus {
   font-family: 'Press Start 2P', cursive;
 
   /* background-color:darkgray;
