@@ -22,9 +22,17 @@ body {
   border: none !important;
 }
 
+.amplify-nav-right {
+  text-align: center !important;
+}
+
 .user-name {
   position: absolute;
   right: 20px;
+}
+
+input#photoupload {
+  margin-bottom: 10px;
 }
 
 .meme-tags {

@@ -7,7 +7,7 @@ var userName = localStorage.getItem("CognitoIdentityServiceProvider.18kp0d0foqku
 
 const Nav = () => (
     <nav className='navbar fixed-top navbar-expand-lg navbar-dark bg-light'>
-        <a className='navbar-brand' href='/'>memePie</a>
+        <a className='navbar-brand' href='/fresh'>memePie</a>
         <div className="collapse navbar-collapse" id="navbarNav">
             <ul className="navbar-nav">
                 <li className="nav-item">
@@ -18,6 +18,9 @@ const Nav = () => (
                 </li>
                 <li className="nav-item">
                     <a className="nav-link" href="/search">Search</a>
+                </li>
+                <li className="nav-item">
+                    <a className="nav-link" href="/user">User</a>
                 </li>
             </ul>
             <p className="user-name">
