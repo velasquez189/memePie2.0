@@ -84,17 +84,17 @@ class User extends Component {
                 {
                   meme.offensive ? (
                     <div>
-                      <p className="meme-loadedby">uploaded by: {meme.uploadedBy}</p>
-                      <img src={"../../../images/triggered.jpg"}
+                      <p className="meme-loadedby">Uploaded By: {meme.uploadedBy}</p>
+                      <img src={"../../../images/triggered.png"}
                         alt={meme.imgFilePath}
                         // data-offensive={meme.offensive}
                         onClick={this.toggleOffensive}
                         style={{ width: '300px', marginBottom: '20px', border: '2px solid black' }} />
-                      <p className='meme-tags rounded'> tags: {meme.tags.join(', ')} </p>
+                      <p className='meme-tags rounded'> Tags: {meme.tags.join(', ')} </p>
                     </div>
                   ) : (
                       <div>
-                        <p className="meme-loadedby">uploaded by: {meme.uploadedBy}</p>
+                        <p className="meme-loadedby">Uploaded By: {meme.uploadedBy}</p>
                         <img className="rounded"
                           src={meme.imgFilePath}
                           alt="hm"
@@ -104,7 +104,7 @@ class User extends Component {
                           // onClick={this.toggleOffensive} 
                           style={{ width: '300px', marginBottom: '20px', border: '2px solid black' }}
                         />
-                        <p className='meme-tags rounded'> tags: {meme.tags.join(', ')} </p>
+                        <p className='meme-tags rounded'> Tags: {meme.tags.join(', ')} </p>
 
                       </div>
 
@@ -131,4 +131,4 @@ class User extends Component {
   }
 };
 
-export default withAuthenticator(User); 
+export default withAuthenticator(User, {includeGreetings: true}); 

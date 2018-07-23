@@ -46,10 +46,9 @@ class Search extends Component {
   }
 
   toggleOffensive = (event) => {
-    console.log(event.target);
-    event.target.offensive = !event.target.offensive;
+    event.target.src = event.target.alt;
   }
-
+  
   searchUser = () => {
     let n = this.state.n * 6;
     console.log(`searching for user...`);
@@ -82,13 +81,40 @@ class Search extends Component {
           <List>
             {this.state.memes.map(meme => (
               <ListItem key={meme._id}>
-                <p className="meme-loadedby">uploaded by: {meme.uploadedBy}</p>
+                {
+                  meme.offensive ? (
+                    <div>
+                      <p className="meme-loadedby">Uploaded By: {meme.uploadedBy}</p>
+                      <img src={"../../../images/triggered.png"}
+                        className={"rounded"}
+                        alt={meme.imgFilePath}
+                        // data-offensive={meme.offensive}
+                        onClick={this.toggleOffensive}
+                        style={{ width: '300px', marginBottom: '20px', border: '2px solid black' }} />
+                      <p className='meme-tags rounded'> Tags: {meme.tags.join(', ')} </p>
+                    </div>
+                  ) : (
+                      <div>
+                        <p className="meme-loadedby">Uploaded By: {meme.uploadedBy}</p>
 
-                <img className="rounded" src={meme.imgFilePath} alt="hm" data-offensive={meme.offensive} onClick={this.toggleOffensive} style={{ width: '300px', marginBottom: '20px', border: '2px solid black' }} />
-              </ListItem>
+                        <img className="rounded"
+                          src={meme.imgFilePath}
+                          alt="hm"
+                          totalvote={meme.totalVote}
+                          likedby={meme.likedBy}
+                          // data-offensive={meme.offensive} 
+                          // onClick={this.toggleOffensive} 
+                          style={{ width: '300px', marginBottom: '20px', border: '2px solid black' }}
+                        />
+                        <p className='meme-tags rounded'> Tags: {meme.tags.join(', ')} </p>
+
+                      </div>
+
+                    )
+                }              </ListItem>
             ))}
             <div>
-            <Waypoint onEnter={this.loadMemes}></Waypoint>
+              <Waypoint onEnter={this.loadMemes}></Waypoint>
             </div>
             <br /><br /><br />
           </List>
