@@ -5,6 +5,7 @@ import { List, ListItem } from "../../components/List";
 import LikeButton from "../../components/LikeButton";
 import { TagList } from "../../components/TagList/TagList";
 import DeleteBtn from "../../components/DeleteBtn";
+import DownButton from "../../components/DownButton";
 import Waypoint from "react-waypoint";
 import { withAuthenticator } from 'aws-amplify-react';
 
@@ -49,6 +50,20 @@ class User extends Component {
         .catch(err => console.log(err));
     } else { return; }
   }
+
+  updateDislike = meme => {
+    var user = localStorage.getItem('CognitoIdentityServiceProvider.18kp0d0foqkulkcf15kab8r4sm.LastAuthUser');
+    console.log(user, meme._id);
+    if (meme.dislikedBy.indexOf(user) < 0) {
+    API.downVote({id: meme._id, username: user })
+      .then(res => {
+        console.log("updated meme with down vote");
+        this.setState({ n: this.state.n -1 });
+        this.loadMemes()
+      })
+      .catch(err => console.log(err));
+  } else { return; }
+}
 
   handleDelete = id => {
     // +    console.log(`Deleting ${id}`);
@@ -96,6 +111,7 @@ class User extends Component {
                     )
                 }
                 <LikeButton onClick={() => this.updateLike(meme)} />
+                <DownButton onClick={() => this.updateDislike(meme)} />
                 <DeleteBtn onClick={() => this.handleDelete(meme._id)} />
                 <TagList key={meme._id}>
                 </TagList>
