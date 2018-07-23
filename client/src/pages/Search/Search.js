@@ -2,6 +2,8 @@ import React, { Component } from "react";
 import API from "../../utils/API";
 import { Container } from "../../components/Grid";
 import { List, ListItem } from "../../components/List";
+import LikeButton from "../../components/LikeButton";
+import DownButton from "../../components/DownButton";
 import Waypoint from "react-waypoint";
 
 
@@ -48,7 +50,7 @@ class Search extends Component {
   toggleOffensive = (event) => {
     event.target.src = event.target.alt;
   }
-  
+
   searchUser = () => {
     let n = this.state.n * 6;
     console.log(`searching for user...`);
@@ -111,7 +113,15 @@ class Search extends Component {
                       </div>
 
                     )
-                }              </ListItem>
+                }
+                <div className='row'>
+                  <LikeButton onClick={() => this.updateLike(meme)} />
+                  <DownButton onClick={() => this.updateDislike(meme)} />
+                </div>
+
+
+
+              </ListItem>
             ))}
             <div>
               <Waypoint onEnter={this.loadMemes}></Waypoint>

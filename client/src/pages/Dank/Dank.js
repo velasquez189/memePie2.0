@@ -4,7 +4,6 @@ import { Container } from "../../components/Grid";
 import { List, ListItem } from "../../components/List";
 import LikeButton from "../../components/LikeButton";
 import DownButton from "../../components/DownButton";
-import { TagList } from "../../components/TagList/TagList";
 import Waypoint from "react-waypoint";
 
 
@@ -100,10 +99,10 @@ class Dank extends Component {
 
                     )
                 }
-                <LikeButton onClick={() => this.updateLike(meme)} />
-                <DownButton onClick={() => this.updateDislike(meme)} />
-                <TagList key={meme._id}>
-                </TagList>
+                <div className='row'>
+                  <LikeButton onClick={() => this.updateLike(meme)} />
+                  <DownButton onClick={() => this.updateDislike(meme)} />
+                </div>
                 
               </ListItem>
 
