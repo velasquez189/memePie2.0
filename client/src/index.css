@@ -46,11 +46,10 @@ input#photoupload {
   background-color: black;
   border-radius: none;
   color: white;
+  margin-right: 10px;
+  margin-left: 10px;
 }
 
-.row {
-  display: block;
-}
 
 .form-control {
   width: 70%;
@@ -69,4 +68,9 @@ button, input {
   width: 70%;
   margin-left: auto;
   margin-right: auto;
+}
+
+.row {
+  /* flex-wrap: nowrap; */
+  display: inline-flex;
 }

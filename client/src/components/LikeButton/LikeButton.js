@@ -34,10 +34,11 @@ class LikeButton extends Component {
     render() {
         const label = this.state.liked ? 'not dank' : 'DANK'
         return (
-            <div className="customContainer">
+            <div className="col-xs-6 customContainer">
                 <button className="btn dank-btn" onClick={this.props.onClick}>
                     {label}</button>
             </div>
+      
         );
     }
 }
