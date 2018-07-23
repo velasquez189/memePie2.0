@@ -50,6 +50,17 @@ input#photoupload {
   margin-left: 10px;
 }
 
+.dank-btn:hover, .dank-btn:focus, .dank-btn:active {
+  font-family: 'Press Start 2P', cursive;
+
+  /* background-color:darkgray;
+  color: black; */
+}
+
+/* .dank-btn:focus {
+  color:blue;
+} */
+
 
 .form-control {
   width: 70%;
