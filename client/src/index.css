@@ -57,7 +57,7 @@ input#photoupload {
   font-style: oblique;
 }
 
-.dank-btn, .dlt-btn {
+.dank-btn {
   background-color: black;
   border-radius: none;
   color: white;
@@ -66,8 +66,7 @@ input#photoupload {
 }
 
 .dank-btn:hover {
-  font-family: 'Press Start 2P', cursive;
-
+background-color: grey;
   /* background-color:darkgray;
   color: black; */
 }
