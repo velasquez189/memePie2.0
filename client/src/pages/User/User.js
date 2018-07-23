@@ -112,8 +112,9 @@ class User extends Component {
                 <div className='row'>
                   <LikeButton onClick={() => this.updateLike(meme)} />
                   <DownButton onClick={() => this.updateDislike(meme)} />
+                  <DeleteBtn onClick={() => this.handleDelete(meme._id)} />
+
                 </div>
-                <DeleteBtn onClick={() => this.handleDelete(meme._id)} />
               </ListItem>
 
             ))}
