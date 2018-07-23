@@ -111,21 +111,28 @@ class Upload extends Component {
     return (
       <Container fluid>
         {/* <Authenticator federated={federated} includeGreetings={true}> */}
-          {/* <S3Album picker /> */}
-          <input id="photoupload" type="file" accept="image/*" onChange={this.handleUpload.bind(this)} />
-          {/* { this.state && <S3Image path={this.state.filePath} /> } */}
-          <form id="tag-form" >
-            <div className="form-group row">
-              {/* <label htmlFor="colFormLabelSm" className="galada-fnt col-sm-2 col-form-label col-form-label-sm">Add a Category:</label> */}
-              <div className="">
+        {/* <S3Album picker /> */}
+        <input id="photoupload" type="file" accept="image/*" onChange={this.handleUpload.bind(this)} />
+        {/* { this.state && <S3Image path={this.state.filePath} /> } */}
+        <form id="tag-form" >
+          <div className="form-group row">
+            {/* <label htmlFor="colFormLabelSm" className="galada-fnt col-sm-2 col-form-label col-form-label-sm">Add a Category:</label> */}
+            <div className="">
+              <br />
               <div className="rules">Tags:</div>
               <div className="rules">MAKE THEM ONE WORD IF YOU WANT PEOPLE TO FIND THEM...</div>
-                <input type="string" className="form-control form-control-sm" id="colFormLabelSm" placeholder="Seperate them with commas!" onChange={this.handleInputChange} />
-                Is this meme Offensive? <input type="checkbox" className="offensive" onChange={this.handleCheckbox} /> 
+              <br />
+              <input type="string" className="form-control form-control-sm tags-text" id="colFormLabelSm" placeholder="Seperate them with commas!" onChange={this.handleInputChange} />
+            <br />
+              <div className='rules'>
+                IS THIS MEME OFFENSIVE? <input type="checkbox" className="offensive" onChange={this.handleCheckbox} />
               </div>
             </div>
-            <button id="addphoto" onClick={this.mongoUpload}> Add Photo </button>
-          </form>
+          </div>
+          <div>
+            <button className='btn' id="addphoto" onClick={this.mongoUpload}> Add Photo </button>
+          </div>
+        </form>
         {/* </ Authenticator> */}
       </Container>
     )
@@ -133,4 +140,4 @@ class Upload extends Component {
 };
 
 // export default Upload
-export default withAuthenticator(Upload, {includeGreetings: true, federated: federated});
+export default withAuthenticator(Upload, { includeGreetings: true, federated: federated });

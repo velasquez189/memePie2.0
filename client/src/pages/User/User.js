@@ -3,7 +3,6 @@ import API from "../../utils/API";
 import { Container } from "../../components/Grid";
 import { List, ListItem } from "../../components/List";
 import LikeButton from "../../components/LikeButton";
-import { TagList } from "../../components/TagList/TagList";
 import DeleteBtn from "../../components/DeleteBtn";
 import DownButton from "../../components/DownButton";
 import Waypoint from "react-waypoint";
@@ -110,11 +109,12 @@ class User extends Component {
 
                     )
                 }
-                <LikeButton onClick={() => this.updateLike(meme)} />
-                <DownButton onClick={() => this.updateDislike(meme)} />
-                <DeleteBtn onClick={() => this.handleDelete(meme._id)} />
-                <TagList key={meme._id}>
-                </TagList>
+                <div className='row'>
+                  <LikeButton onClick={() => this.updateLike(meme)} />
+                  <DownButton onClick={() => this.updateDislike(meme)} />
+                  <DeleteBtn onClick={() => this.handleDelete(meme._id)} />
+
+                </div>
               </ListItem>
 
             ))}
