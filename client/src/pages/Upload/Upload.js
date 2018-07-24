@@ -140,4 +140,4 @@ class Upload extends Component {
 };
 
 // export default Upload
-export default withAuthenticator(Upload, { federated: federated });
+export default withAuthenticator(Upload);
