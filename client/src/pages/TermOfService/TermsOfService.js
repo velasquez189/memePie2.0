@@ -69,6 +69,8 @@ class TermsOfService extends Component {
                     <h4>memePie may select certain Images that you upload to the memePie for promotional activities of memePie’ business,
         including but not limited to: use in memePie’s own promotional materials either on-line or in printed form.</h4>
                 </p>
+                <div className="upload-terms"><a href="/upload">Back to Upload</a></div>
+
             </Container >
         )
     }
