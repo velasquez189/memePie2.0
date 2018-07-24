@@ -105,7 +105,8 @@ class Upload extends Component {
         {/* <Authenticator federated={federated} includeGreetings={true}> */}
         {/* <S3Album picker /> */}
         <input id="photoupload" type="file" accept="image/*" onChange={this.handleUpload.bind(this)} />
-        { this.state && <S3Image path={this.state.filePath} /> }
+        <br/>
+        { this.state.filePath ? (this.state && <img className="image-upload"  src={ 'https://s3.us-east-2.amazonaws.com/memepie-userfiles-mobilehub-2114693465/public/' + this.state.filePath} />) : (<div className={"hidden"}/>) }
         <form id="tag-form" >
           <div className="form-group row">
             {/* <label htmlFor="colFormLabelSm" className="galada-fnt col-sm-2 col-form-label col-form-label-sm">Add a Category:</label> */}
