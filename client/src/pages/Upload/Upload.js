@@ -3,7 +3,7 @@ import API from "../../utils/API";
 import { Container } from "../../components/Grid";
 import { Storage } from 'aws-amplify';
 // import awsmobile from '../../aws-exports';
-import { withAuthenticator } from 'aws-amplify-react';
+import { S3Image, withAuthenticator } from 'aws-amplify-react';
 require("babel-core/register");
 require("babel-polyfill");
 
@@ -20,14 +20,6 @@ const federated = {
 };
 
 // Amplify.configure(awsmobile);
-
-
-// var albumBucketName = 'memetest-userfiles-mobilehub-1037221317';
-
-// var s3 = new AWS.S3({
-//     apiVersion: '2006-03-01',
-//     params: { Bucket: albumBucketName }
-//   });
 
 
 
@@ -80,7 +72,7 @@ class Upload extends Component {
       filePath: 'https://s3.us-east-2.amazonaws.com/memepie-userfiles-mobilehub-2114693465/public/' + path
     })
     Storage.put(path, file).then(() => {
-      // this.setState({ filePath: path })
+      this.setState({ filePath: path })
     });
   }
 
@@ -98,7 +90,7 @@ class Upload extends Component {
     })
     console.log(this.state)
     API.uploadMeme({
-      imgFilePath: this.state.filePath,
+      imgFilePath: 'https://s3.us-east-2.amazonaws.com/memepie-userfiles-mobilehub-2114693465/public/' + this.state.filePath,
       uploadedBy: this.state.uploadedBy,
       tags: this.state.tags,
       offensive: this.state.offensive
@@ -113,7 +105,8 @@ class Upload extends Component {
         {/* <Authenticator federated={federated} includeGreetings={true}> */}
         {/* <S3Album picker /> */}
         <input id="photoupload" type="file" accept="image/*" onChange={this.handleUpload.bind(this)} />
-        {/* { this.state && <S3Image path={this.state.filePath} /> } */}
+        <br/>
+        { this.state.filePath ? (this.state && <img className="image-upload"  src={ 'https://s3.us-east-2.amazonaws.com/memepie-userfiles-mobilehub-2114693465/public/' + this.state.filePath} />) : (<div className={"hidden"}/>) }
         <form id="tag-form" >
           <div className="form-group row">
             {/* <label htmlFor="colFormLabelSm" className="galada-fnt col-sm-2 col-form-label col-form-label-sm">Add a Category:</label> */}

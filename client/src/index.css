@@ -56,6 +56,12 @@ input#photoupload {
   margin-bottom: 10px;
 }
 
+.image-upload {
+  width:70%;
+  max-width: 300px;
+  border-radius: 5px;
+}
+
 .meme-tags {
   font-family: 'Galada', cursive;
   font-weight: 700;
