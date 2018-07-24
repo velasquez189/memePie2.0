@@ -113,7 +113,7 @@ class Dank extends Component {
             <br /><br /><br />
           </List>
         ) : (
-            <h3>No Results to Display</h3>
+            <h3>No Results</h3>
           )}
       </Container>
     )

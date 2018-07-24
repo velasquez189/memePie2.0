@@ -67,14 +67,14 @@ class Search extends Component {
   render() {
     return (
       <Container fluid>
-        <h4> Search for memes by tag </h4>
+        <h4> Search for Memes by Tag </h4>
         <input type="text" className="form-control" onChange={this.handleKeywords} />
-        <button type='submit' className='btn' onClick={this.loadMemes}> Search </button>
+        <button type='submit' className='btn srch-btn' onClick={this.loadMemes}> Search </button>
         <br /><br />
 
-        <h4> Search for memes by user </h4>
+        <h4> Search for Memes by User </h4>
         <input type="text" className="form-control" onChange={this.handleUser} />
-        <button type='submit' className='btn' onClick={this.searchUser}> Search </button>
+        <button type='submit' className='btn srch-btn scnd-btn' onClick={this.searchUser}> Search </button>
 
         {this.state.memes.length ? (
 
@@ -127,7 +127,7 @@ class Search extends Component {
             <br /><br /><br />
           </List>
         ) : (
-            <h3>No Results to Display</h3>
+            <h3 className="srch-rslts">No Results</h3>
           )}
       </Container>
     )
