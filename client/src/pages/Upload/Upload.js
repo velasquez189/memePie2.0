@@ -3,7 +3,7 @@ import API from "../../utils/API";
 import { Container } from "../../components/Grid";
 import { Storage } from 'aws-amplify';
 // import awsmobile from '../../aws-exports';
-import { S3Image, withAuthenticator } from 'aws-amplify-react';
+import { withAuthenticator } from 'aws-amplify-react';
 require("babel-core/register");
 require("babel-polyfill");
 
@@ -13,11 +13,11 @@ var user = localStorage.getItem('CognitoIdentityServiceProvider.7gi6ch1u4kfd9ibn
 // aws-amplify-cachefederatedInfo.data.user.name
 // var user = Authenticator.state.authData.username;
 
-const federated = {
+// const federated = {
   // google_client_id: '431644285431-sc03hn7f3i24a956m97sgmtqb3pegeuj', // .apps.googleusercontent.com
-  facebook_app_id: '179714042732736',
+  // facebook_app_id: '179714042732736',
   // amazon_client_id: '1k6u5ggucfgoeker9cg0fvrj82'
-};
+// };
 
 // Amplify.configure(awsmobile);
 
