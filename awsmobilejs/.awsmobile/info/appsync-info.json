@@ -6,8 +6,8 @@
     "authenticationType": "AWS_IAM",
     "creationTime": "2018-07-11-13-19-15",
     "lastUpdateTime": "2018-07-11-13-19-15",
-    "lastSyncTime": "2018-07-24-01-17-08",
+    "lastSyncTime": "2018-07-24-01-38-22",
     "lastPushSuccessful": true,
     "AppSyncConsoleUrl": "https://console.aws.amazon.com/appsync/home?region=us-east-2#/wbhkfl4sa5e45pecjmcxfylvy4/v1/home",
-    "lastSyncToDevTime": "2018-07-24-01-18-05"
+    "lastSyncToDevTime": "2018-07-24-01-39-23"
 }
