@@ -10,6 +10,8 @@ class TermsOfService extends Component {
         return (
             <Container fluid>
                 <p className="terms">
+                    <div className="upload-terms"><a href="/upload">Back to Upload</a></div>
+                    <br />
                     <h2>1. GENERAL</h2>
                     <h4>By uploading an image or video you guarantee that you have read these Terms and Conditions for uploading images, photos
                         and videos (Image/s) to memePie and that you agree to abide by all clauses within these Terms and Conditions. You
@@ -55,17 +57,17 @@ class TermsOfService extends Component {
                         consent, though it reserves the right to crop images or videos or to make adjustments to the brightness, exposure,
         colours or general appearance of any Image that it believes warrants such adjustment for the purpose of better display.</h4>
 
-                    <h2>11. INDEMNITY FROM CLAIMS</h2>
+                    <h2>9. INDEMNITY FROM CLAIMS</h2>
                     <h4>You agree to indemnify and hold memePie and its subsidiaries, affiliates, officers, employees and representatives
                         free from any claim or demand made by any third party due to or arising out of your uploading to memePie of any
                         Images or from any violation of any other party's rights caused by the use of or the content within the Images you
         upload.</h4>
 
-                    <h2>12. UPDATING THESE TERMS AND CONDITIONS</h2>
+                    <h2>10. UPDATING THESE TERMS AND CONDITIONS</h2>
                     <h4>memePie reserves the right in its sole and absolute discretion to alter these terms at any time for any reason without
         prior notice. You are responsible for keeping yourself updated on any such changes herein that might affect you.</h4>
 
-                    <h2>9. SELECTED IMAGES FOR PROMOTIONS</h2>
+                    <h2>11. SELECTED IMAGES FOR PROMOTIONS</h2>
                     <h4>memePie may select certain Images that you upload to the memePie for promotional activities of memePie’ business,
         including but not limited to: use in memePie’s own promotional materials either on-line or in printed form.</h4>
                 </p>
