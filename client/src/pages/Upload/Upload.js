@@ -99,6 +99,36 @@ class Upload extends Component {
       .catch(err => console.log(err));
   }
 
+  updateLike = meme => {
+    var user = localStorage.getItem('CognitoIdentityServiceProvider.18kp0d0foqkulkcf15kab8r4sm.LastAuthUser');
+    console.log(user, meme._id);
+    console.log(meme);
+    if (meme.likedBy.indexOf(user) < 0) {
+      API.toggleLike({ id: meme._id, username: user })
+        .then(res => {
+          console.log("updated meme with like");
+          this.setState({ n: this.state.n - 1 });
+          this.loadMemes()
+        })
+        .catch(err => console.log(err));
+    } else { return; }
+  }
+
+  updateDislike = meme => {
+    var user = localStorage.getItem('CognitoIdentityServiceProvider.18kp0d0foqkulkcf15kab8r4sm.LastAuthUser');
+    console.log(user, meme._id);
+    if (meme.dislikedBy.indexOf(user) < 0) {
+      API.downVote({ id: meme._id, username: user })
+        .then(res => {
+          console.log("updated meme with down vote");
+          this.setState({ n: this.state.n - 1 });
+          this.loadMemes()
+        })
+        .catch(err => console.log(err));
+    } else { return; }
+  }
+
+
   render() {
     return (
       <Container fluid>
@@ -112,10 +142,10 @@ class Upload extends Component {
             {/* <label htmlFor="colFormLabelSm" className="galada-fnt col-sm-2 col-form-label col-form-label-sm">Add a Category:</label> */}
             <div className="">
               <br />
-              <div className="rules">Tags:</div>
-              <div className="rules">MAKE THEM ONE WORD IF YOU WANT PEOPLE TO FIND THEM...</div>
+              <div className="rules">TAGS:</div>
+              <div className="rules">SEPERATE TAGS WITH COMMAS...</div>
               <br />
-              <input type="string" className="form-control form-control-sm tags-text" id="colFormLabelSm" placeholder="Seperate them with commas!" onChange={this.handleInputChange} />
+              <input type="string" className="form-control form-control-sm tags-text" id="colFormLabelSm" placeholder="Get Creative..." onChange={this.handleInputChange} />
             <br />
               <div className='rules'>
                 IS THIS MEME OFFENSIVE? <input type="checkbox" className="offensive" onChange={this.handleCheckbox} />

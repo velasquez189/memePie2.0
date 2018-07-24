@@ -36,7 +36,7 @@ class Memes extends Component {
   toggleOffensive = (event) => {
     event.target.src = event.target.alt;
   }
-
+ 
   updateLike = meme => {
     var user = localStorage.getItem('CognitoIdentityServiceProvider.18kp0d0foqkulkcf15kab8r4sm.LastAuthUser');
     console.log(user, meme._id);
