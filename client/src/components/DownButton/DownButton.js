@@ -16,7 +16,6 @@ class DownButton extends Component {
     }
 
     render() {
-        const text = this.state.downVote ? 'downVote' : 'DownVote';
         const label = this.state.downVote ? 'STANK' : 'STANK'
         return (
             <div className="col-xs-6 customContainer">
