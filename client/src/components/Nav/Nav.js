@@ -24,8 +24,8 @@ const Nav = () => (
                 </li>
             </ul>
             <p className="user-name">
-                {userName}
-                </p>
+                <a className="nav-link" href="/user">{userName}</a>
+            </p>
 
         </div>
     </nav>

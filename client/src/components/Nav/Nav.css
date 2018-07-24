@@ -27,3 +27,9 @@
     font-family: 'Galada', cursive;
     color: black !important;
 }
+
+.nav-user-name {
+    columns: black !important;
+    text-decoration: none !important;
+    font-family: 'Galada', cursive;
+}
