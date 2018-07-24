@@ -32,6 +32,7 @@ body {
   border: none !important;
   font-family: 'Galada', cursive;
   font-size: auto;
+  border-radius: 5px;
 }
 
 .amplify-a, .amplify-nav-button, .amplify-nav-item, #addphoto, .tags-text, .srch-btn, h4, .meme-loadedby {
