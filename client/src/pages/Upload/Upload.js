@@ -132,4 +132,4 @@ class Upload extends Component {
 };
 
 // export default Upload
-export default withAuthenticator(Upload, { includeGreetings: true, federated: federated });
+export default withAuthenticator(Upload);
