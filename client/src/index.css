@@ -71,6 +71,10 @@ input#photoupload {
   margin-bottom: 20px;
 }
 
+.dlt-btn {
+  border: 1px solid black;
+}
+
 .dank-btn {
   background-color: black;
   border-radius: none;
