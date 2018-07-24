@@ -108,6 +108,7 @@ class Memes extends Component {
                 }
                 <div className='row'>
                   <LikeButton onClick={() => this.updateLike(meme)} />
+                  <span className="likes">{meme.totalVote}</span>
                   <DownButton onClick={() => this.updateDislike(meme)} />
                 </div>
               </ListItem>

@@ -42,8 +42,10 @@ h3 {
   font-family: 'Press Start 2P', cursive;
 }
 
-
-
+span.likes {
+  line-height: 38px;
+  font-size: 38px;
+}
 
 .user-name {
   position: absolute;
