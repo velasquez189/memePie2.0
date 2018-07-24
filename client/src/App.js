@@ -7,6 +7,7 @@ import Upload from './pages/Upload';
 import Search from './pages/Search';
 import Dank from './pages/Dank';
 import User from './pages/User';
+import TermsOfService from './pages/TermOfService/TermsOfService';
 
 const App = () => (
   <Router>
@@ -20,6 +21,7 @@ const App = () => (
         <Route exact path="/search" component={Search} />
         <Route exact path="/dank" component={Dank} />
         <Route exact path="/user" component={User} />
+        <Route exact path="/terms" component={TermsOfService}/>
       </Switch>
       <Footer />
     </div>

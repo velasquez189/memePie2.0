@@ -154,6 +154,9 @@ class Upload extends Component {
           </div>
           <div>
             <button className='btn' id="addphoto" onClick={this.mongoUpload}> Add Photo </button>
+            <br/>
+            <br/>
+            <div className="upload-terms">By uploading to memePie you agree to the <a href="/terms">Terms and Conditions</a></div>
           </div>
         </form>
         {/* </ Authenticator> */}
