@@ -34,7 +34,7 @@ body {
   font-size: auto;
 }
 
-.amplify-a, .amplify-nav-button, .amplify-nav-item, #addphoto, .tags-text, .srch-btn, h4 {
+.amplify-a, .amplify-nav-button, .amplify-nav-item, #addphoto, .tags-text, .srch-btn, h4, .meme-loadedby {
   font-family: 'Galada', cursive !important;
 }
 
