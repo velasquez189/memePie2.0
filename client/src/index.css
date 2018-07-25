@@ -26,6 +26,28 @@ body {
   text-align: center !important;
 }
 
+.amplify-section-header, .amplify-section-footer, .amplify-a, #photoupload {
+  color: black !important;
+  background-color: white !important;
+  border: none !important;
+  font-family: 'Galada', cursive;
+  font-size: auto;
+  border-radius: 5px;
+}
+
+.amplify-a, .amplify-nav-button, .amplify-nav-item, #addphoto, .tags-text, .srch-btn, h4, .meme-loadedby {
+  font-family: 'Galada', cursive !important;
+}
+
+h3 {
+  font-family: 'Press Start 2P', cursive;
+}
+
+span.likes {
+  line-height: 38px;
+  font-size: 38px;
+}
+
 .user-name {
   position: absolute;
   right: 20px;
@@ -35,6 +57,13 @@ input#photoupload {
   margin-bottom: 10px;
 }
 
+.image-upload {
+  width:70%;
+  max-width: 300px;
+  border: 3px solid black;
+  border-radius: 5px;
+}
+
 .meme-tags {
   font-family: 'Galada', cursive;
   font-weight: 700;
@@ -42,15 +71,39 @@ input#photoupload {
   font-style: oblique;
 }
 
+.srch-rslts {
+  margin-top: 20px !important;
+}
+
+.srch-btn {
+  margin-top: 10px;
+}
+
+.scnd-btn {
+  margin-bottom: 20px;
+}
+
+.dlt-btn {
+  border: 1px solid black;
+}
+
 .dank-btn {
   background-color: black;
   border-radius: none;
   color: white;
+  margin-right: 10px;
+  margin-left: 10px;
 }
 
-.row {
-  display: block;
+.dank-btn:hover {
+background-color: grey;
+  /* background-color:darkgray;
+  color: black; */
 }
+
+/* .dank-btn:focus {
+  color:blue;
+} */
 
 .form-control {
   width: 70%;
@@ -69,4 +122,20 @@ button, input {
   width: 70%;
   margin-left: auto;
   margin-right: auto;
+}
+
+.row {
+  /* flex-wrap: nowrap; */
+  display: inline-flex;
+}
+
+p.terms {
+  margin-left: auto;
+  margin-right: auto;
+  width: 90%;
+  font-size: 10px !important;
+}
+
+.upload-terms {
+  font-size: 10px;
 }

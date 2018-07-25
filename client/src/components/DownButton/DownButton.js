@@ -16,11 +16,10 @@ class DownButton extends Component {
     }
 
     render() {
-        const text = this.state.downVote ? 'downVote' : 'DownVote';
-        const label = this.state.downVote ? 'NOT DANK' : 'NOT DANK'
+        const label = this.state.downVote ? 'STANK' : 'STANK'
         return (
-            <div className="customContainer">
-                <button className="btn btn-primary" onClick={this.props.onClick}>
+            <div className="col-xs-6 customContainer">
+                <button className="btn dank-btn" onClick={this.props.onClick}>
                     {label}</button>
               
             </div>

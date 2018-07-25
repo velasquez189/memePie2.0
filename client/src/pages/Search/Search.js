@@ -2,6 +2,8 @@ import React, { Component } from "react";
 import API from "../../utils/API";
 import { Container } from "../../components/Grid";
 import { List, ListItem } from "../../components/List";
+import LikeButton from "../../components/LikeButton";
+import DownButton from "../../components/DownButton";
 import Waypoint from "react-waypoint";
 
 
@@ -35,8 +37,6 @@ class Search extends Component {
       .then(res => {
         this.setState({
           memes: res.data,
-          // uploadedBy: "", 
-          // tags: [],
           n: this.state.n + 1
         });
         console.log(this.state.memes);
@@ -48,7 +48,7 @@ class Search extends Component {
   toggleOffensive = (event) => {
     event.target.src = event.target.alt;
   }
-  
+
   searchUser = () => {
     let n = this.state.n * 6;
     console.log(`searching for user...`);
@@ -62,19 +62,47 @@ class Search extends Component {
       }).catch(err => console.log(err));
   }
 
+  updateLike = meme => {
+    var user = localStorage.getItem('CognitoIdentityServiceProvider.18kp0d0foqkulkcf15kab8r4sm.LastAuthUser');
+    console.log(user, meme._id);
+    console.log(meme);
+    if (meme.likedBy.indexOf(user) < 0) {
+      API.toggleLike({ id: meme._id, username: user })
+        .then(res => {
+          console.log("updated meme with like");
+          this.setState({ n: this.state.n - 1 });
+          this.loadMemes()
+        })
+        .catch(err => console.log(err));
+    } else { return; }
+  }
+
+  updateDislike = meme => {
+    var user = localStorage.getItem('CognitoIdentityServiceProvider.18kp0d0foqkulkcf15kab8r4sm.LastAuthUser');
+    console.log(user, meme._id);
+    if (meme.dislikedBy.indexOf(user) < 0) {
+      API.downVote({ id: meme._id, username: user })
+        .then(res => {
+          console.log("updated meme with down vote");
+          this.setState({ n: this.state.n - 1 });
+          this.loadMemes()
+        })
+        .catch(err => console.log(err));
+    } else { return; }
+  }
+
+
   render() {
     return (
       <Container fluid>
-
-        <h4> Search for memes by Tag </h4>
-        <input type="text" onChange={this.handleKeywords} />
-        <button onClick={this.loadMemes}> Search </button>
-
+        <h4> Search for Memes by Tag </h4>
+        <input type="text" className="form-control" onChange={this.handleKeywords} />
+        <button type='submit' className='btn srch-btn' onClick={this.loadMemes}> Search </button>
         <br /><br />
 
-        <h4> Search for memes by User </h4>
-        <input type="text" onChange={this.handleUser} />
-        <button onClick={this.searchUser}> Search </button>
+        <h4> Search for Memes by User </h4>
+        <input type="text" className="form-control" onChange={this.handleUser} />
+        <button type='submit' className='btn srch-btn scnd-btn' onClick={this.searchUser}> Search </button>
 
         {this.state.memes.length ? (
 
@@ -111,7 +139,16 @@ class Search extends Component {
                       </div>
 
                     )
-                }              </ListItem>
+                }
+                <div className='row'>
+                  <LikeButton onClick={() => this.updateLike(meme)} />
+                  <span className="likes">{meme.totalVote}</span>
+                  <DownButton onClick={() => this.updateDislike(meme)} />
+                </div>
+
+
+
+              </ListItem>
             ))}
             <div>
               <Waypoint onEnter={this.loadMemes}></Waypoint>
@@ -119,7 +156,7 @@ class Search extends Component {
             <br /><br /><br />
           </List>
         ) : (
-            <h3>No Results to Display</h3>
+            <h3 className="srch-rslts">No Results</h3>
           )}
       </Container>
     )

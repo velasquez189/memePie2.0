@@ -24,6 +24,12 @@
 }
 
 .nav-link {
-    font-family: 'Press Start 2P', cursive;
+    font-family: 'Galada', cursive;
     color: black !important;
+}
+
+.nav-user-name {
+    columns: black !important;
+    text-decoration: none !important;
+    font-family: 'Galada', cursive;
 }

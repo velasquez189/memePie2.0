@@ -13,21 +13,13 @@ var user = localStorage.getItem('CognitoIdentityServiceProvider.7gi6ch1u4kfd9ibn
 // aws-amplify-cachefederatedInfo.data.user.name
 // var user = Authenticator.state.authData.username;
 
-const federated = {
+// const federated = {
   // google_client_id: '431644285431-sc03hn7f3i24a956m97sgmtqb3pegeuj', // .apps.googleusercontent.com
-  facebook_app_id: '179714042732736',
+  // facebook_app_id: '179714042732736',
   // amazon_client_id: '1k6u5ggucfgoeker9cg0fvrj82'
-};
+// };
 
 // Amplify.configure(awsmobile);
-
-
-// var albumBucketName = 'memetest-userfiles-mobilehub-1037221317';
-
-// var s3 = new AWS.S3({
-//     apiVersion: '2006-03-01',
-//     params: { Bucket: albumBucketName }
-//   });
 
 
 
@@ -80,7 +72,7 @@ class Upload extends Component {
       filePath: 'https://s3.us-east-2.amazonaws.com/memepie-userfiles-mobilehub-2114693465/public/' + path
     })
     Storage.put(path, file).then(() => {
-      // this.setState({ filePath: path })
+      this.setState({ filePath: path })
     });
   }
 
@@ -98,7 +90,7 @@ class Upload extends Component {
     })
     console.log(this.state)
     API.uploadMeme({
-      imgFilePath: this.state.filePath,
+      imgFilePath: 'https://s3.us-east-2.amazonaws.com/memepie-userfiles-mobilehub-2114693465/public/' + this.state.filePath,
       uploadedBy: this.state.uploadedBy,
       tags: this.state.tags,
       offensive: this.state.offensive
@@ -107,25 +99,66 @@ class Upload extends Component {
       .catch(err => console.log(err));
   }
 
+  updateLike = meme => {
+    var user = localStorage.getItem('CognitoIdentityServiceProvider.18kp0d0foqkulkcf15kab8r4sm.LastAuthUser');
+    console.log(user, meme._id);
+    console.log(meme);
+    if (meme.likedBy.indexOf(user) < 0) {
+      API.toggleLike({ id: meme._id, username: user })
+        .then(res => {
+          console.log("updated meme with like");
+          this.setState({ n: this.state.n - 1 });
+          this.loadMemes()
+        })
+        .catch(err => console.log(err));
+    } else { return; }
+  }
+
+  updateDislike = meme => {
+    var user = localStorage.getItem('CognitoIdentityServiceProvider.18kp0d0foqkulkcf15kab8r4sm.LastAuthUser');
+    console.log(user, meme._id);
+    if (meme.dislikedBy.indexOf(user) < 0) {
+      API.downVote({ id: meme._id, username: user })
+        .then(res => {
+          console.log("updated meme with down vote");
+          this.setState({ n: this.state.n - 1 });
+          this.loadMemes()
+        })
+        .catch(err => console.log(err));
+    } else { return; }
+  }
+
+
   render() {
     return (
       <Container fluid>
         {/* <Authenticator federated={federated} includeGreetings={true}> */}
-          {/* <S3Album picker /> */}
-          <input id="photoupload" type="file" accept="image/*" onChange={this.handleUpload.bind(this)} />
-          {/* { this.state && <S3Image path={this.state.filePath} /> } */}
-          <form id="tag-form" >
-            <div className="form-group row">
-              {/* <label htmlFor="colFormLabelSm" className="galada-fnt col-sm-2 col-form-label col-form-label-sm">Add a Category:</label> */}
-              <div className="">
-              <div className="rules">Tags:</div>
-              <div className="rules">MAKE THEM ONE WORD IF YOU WANT PEOPLE TO FIND THEM...</div>
-                <input type="string" className="form-control form-control-sm" id="colFormLabelSm" placeholder="Seperate them with commas!" onChange={this.handleInputChange} />
-                Is this meme Offensive? <input type="checkbox" className="offensive" onChange={this.handleCheckbox} /> 
+        {/* <S3Album picker /> */}
+        <input id="photoupload" type="file" accept="image/*" onChange={this.handleUpload.bind(this)} />
+        <br/>
+        { this.state.filePath ? (this.state && <img className="image-upload"  src={ 'https://s3.us-east-2.amazonaws.com/memepie-userfiles-mobilehub-2114693465/public/' + this.state.filePath} alt=""/>) : (<div className={"hidden"}/>) }
+        <form id="tag-form" >
+          <div className="form-group row">
+            {/* <label htmlFor="colFormLabelSm" className="galada-fnt col-sm-2 col-form-label col-form-label-sm">Add a Category:</label> */}
+            <div className="">
+              <br />
+              <div className="rules">TAGS:</div>
+              <div className="rules">SEPERATE TAGS WITH COMMAS...</div>
+              <br />
+              <input type="string" className="form-control form-control-sm tags-text" id="colFormLabelSm" placeholder="Get Creative..." onChange={this.handleInputChange} />
+            <br />
+              <div className='rules'>
+                IS THIS MEME OFFENSIVE? <input type="checkbox" className="offensive" onChange={this.handleCheckbox} />
               </div>
             </div>
-            <button id="addphoto" onClick={this.mongoUpload}> Add Photo </button>
-          </form>
+          </div>
+          <div>
+            <button className='btn' id="addphoto" onClick={this.mongoUpload}> Add Photo </button>
+            <br/>
+            <br/>
+            <div className="upload-terms">By uploading to memePie you agree to the <a href="/terms">Terms and Conditions</a></div>
+          </div>
+        </form>
         {/* </ Authenticator> */}
       </Container>
     )
@@ -133,4 +166,4 @@ class Upload extends Component {
 };
 
 // export default Upload
-export default withAuthenticator(Upload, {includeGreetings: true, federated: federated});
+export default withAuthenticator(Upload);

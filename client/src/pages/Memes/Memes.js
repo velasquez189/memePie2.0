@@ -4,7 +4,6 @@ import { Container } from "../../components/Grid";
 import { List, ListItem } from "../../components/List";
 import LikeButton from "../../components/LikeButton";
 import DownButton from "../../components/DownButton";
-import { TagList } from "../../components/TagList/TagList";
 import Waypoint from "react-waypoint";
 
 
@@ -37,7 +36,7 @@ class Memes extends Component {
   toggleOffensive = (event) => {
     event.target.src = event.target.alt;
   }
-
+ 
   updateLike = meme => {
     var user = localStorage.getItem('CognitoIdentityServiceProvider.18kp0d0foqkulkcf15kab8r4sm.LastAuthUser');
     console.log(user, meme._id);
@@ -57,15 +56,15 @@ class Memes extends Component {
     var user = localStorage.getItem('CognitoIdentityServiceProvider.18kp0d0foqkulkcf15kab8r4sm.LastAuthUser');
     console.log(user, meme._id);
     if (meme.dislikedBy.indexOf(user) < 0) {
-    API.downVote({id: meme._id, username: user })
-      .then(res => {
-        console.log("updated meme with down vote");
-        this.setState({ n: this.state.n -1 });
-        this.loadMemes()
-      })
-      .catch(err => console.log(err));
-  } else { return; }
-}
+      API.downVote({ id: meme._id, username: user })
+        .then(res => {
+          console.log("updated meme with down vote");
+          this.setState({ n: this.state.n - 1 });
+          this.loadMemes()
+        })
+        .catch(err => console.log(err));
+    } else { return; }
+  }
 
 
   render() {
@@ -107,11 +106,11 @@ class Memes extends Component {
 
                     )
                 }
-                <LikeButton onClick={() => this.updateLike(meme)} />
-                <DownButton onClick={() => this.updateDislike(meme)} />
-                <TagList key={meme._id}>
-                </TagList>
-                
+                <div className='row'>
+                  <LikeButton onClick={() => this.updateLike(meme)} />
+                  <span className="likes">{meme.totalVote}</span>
+                  <DownButton onClick={() => this.updateDislike(meme)} />
+                </div>
               </ListItem>
 
             ))}
@@ -121,7 +120,7 @@ class Memes extends Component {
             <br /><br /><br />
           </List>
         ) : (
-            <h3>No Results to Display</h3>
+            <h3>No Results</h3>
           )}
       </Container>
     )
