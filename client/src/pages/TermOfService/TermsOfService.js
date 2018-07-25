@@ -8,7 +8,7 @@ class TermsOfService extends Component {
     render() {
         return (
             <Container fluid>
-                <p className="terms">
+                <div className="terms">
                     <div className="upload-terms"><a href="/upload">Back to Upload</a></div>
                     <br />
                     <h2>1. GENERAL</h2>
@@ -69,7 +69,7 @@ class TermsOfService extends Component {
                     <h2>11. SELECTED IMAGES FOR PROMOTIONS</h2>
                     <h4>memePie may select certain Images that you upload to the memePie for promotional activities of memePie’ business,
         including but not limited to: use in memePie’s own promotional materials either on-line or in printed form.</h4>
-                </p>
+                </div>
                 <div className="upload-terms"><a href="/upload">Back to Upload</a></div>
 
             </Container >

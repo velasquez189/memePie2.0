@@ -129,7 +129,7 @@ button, input {
   display: inline-flex;
 }
 
-p.terms {
+.terms {
   margin-left: auto;
   margin-right: auto;
   width: 90%;
