@@ -93,7 +93,9 @@ class Upload extends Component {
       imgFilePath: 'https://s3.us-east-2.amazonaws.com/memepie-userfiles-mobilehub-2114693465/public/' + this.state.filePath,
       uploadedBy: this.state.uploadedBy,
       tags: this.state.tags,
-      offensive: this.state.offensive
+      offensive: this.state.offensive,
+      likedBy: [null],
+      dislikedBy: [null]
     })
       .then(res => window.location = "/fresh")
       .catch(err => console.log(err));
