@@ -14,11 +14,8 @@ class Search extends Component {
     n: 1,
     keyword: "",
     username: "",
+    searchType:""
   };
-
-  componentDidMount() {
-    this.loadMemes();
-  }
 
   handleKeywords = (event) => {
     const { keyword, value } = event.target;
@@ -36,6 +33,7 @@ class Search extends Component {
     API.searchMemes({ query: n, keywords: this.state.keyword })
       .then(res => {
         this.setState({
+          searchType: "tag",
           memes: res.data,
           n: this.state.n + 1
         });
@@ -55,6 +53,7 @@ class Search extends Component {
     API.searchUser({ query: n, username: this.state.username })
       .then(res => {
         this.setState({
+          searchType: "user",
           memes: res.data,
           n: this.state.n + 1
         });
