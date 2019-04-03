@@ -30,9 +30,14 @@ router.route("/upload")
 
 router.route("/like")
     .put(memeController.toggleLike);
+
+router.route('/unLike')
+    .put(memeController.unLike);
     
 router.route("/down")
     .put(memeController.downVote);
 
+router.route('/unDislike')
+    .put(memeController.unDislike);
 
 module.exports = router;  

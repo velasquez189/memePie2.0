@@ -33,9 +33,17 @@ export default {
         console.log("updating like for" + data);
         return axios.put("/api/memeRoutes/like", data);
     },
+    unLike: function (data) {
+        console.log("unliking that shit");
+        return axios.put('/api/memeRoutes/unLike', data);
+    },
     downVote: function (data) {
         console.log("This meme ain't for you")
         return axios.put("/api/memeRoutes/down", data);
+    },
+    unDislike: function (data) {
+        console.log("i changed my mind");
+        return axios.put('/api/memeRoutes/unDislike', data);
     },
     // addLike: function (data) {
     //     console.log(`adding a vote to the total`);

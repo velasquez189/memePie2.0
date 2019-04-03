@@ -60,6 +60,17 @@ module.exports = {
             .then(dbModel => res.json(dbModel))
             .catch(err => res.status(422).json(err))
     },
+    unLike: function (req, res) {
+        console.log(`removing ${req.body.username} from liked database`);
+        db.Meme
+            .findOneAndUpdate({ _id: req.body.id}, 
+                                { $inc: { totalVote: -1 },
+                                $pull: { likedBy: req.body.username }    
+                            })
+            .then(dbModel => res.json(dbModel => res.json(dbModel))
+            .catch(err => res.status(422).json(err))
+            )
+    },
     downVote: function (req, res) {
         console.log('This image aint great');
         console.log(req.body.id, req.body.username)
@@ -70,6 +81,17 @@ module.exports = {
             )
             .then(dbModel => res.json(dbModel))
             .catch(err => rest.status(422).json(err))
+    },
+    unDislike: function (req, res) {
+        console.log(`removing ${req.body.username} from liked database`);
+        db.Meme
+            .findOneAndUpdate({ _id: req.body.id}, 
+                                { $inc: { totalVote: 1 },
+                                $pull: { dislikedBy: req.body.username }    
+                            })
+            .then(dbModel => res.json(dbModel => res.json(dbModel))
+            .catch(err => res.status(422).json(err))
+            )
     },
     delete: function(req, res){
         console.log(`banishing ${req} to hell`);
