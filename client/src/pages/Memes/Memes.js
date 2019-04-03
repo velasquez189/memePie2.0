@@ -41,20 +41,30 @@ class Memes extends Component {
     var user = localStorage.getItem('CognitoIdentityServiceProvider.18kp0d0foqkulkcf15kab8r4sm.LastAuthUser');
     console.log(user, meme._id);
     console.log(meme);
+    console.log("tiggitytest");
     if (meme.likedBy.indexOf(user) < 0) {
-      API.toggleLike({ id: meme._id, username: user })
+      API.upVote({ id: meme._id, username: user })
         .then(res => {
           console.log("updated meme with like");
           this.setState({ n: this.state.n - 1 });
           this.loadMemes()
         })
         .catch(err => console.log(err));
+        // Check if meme is already disliked, then remove downvote from database and adjust total score
+        if (meme.dislikedBy.indexOf(user) > -1) {
+          API.unStank({ id: meme._id, username: user})
+            .then(res => {
+              console.log("removing from disliked");
+            })
+            .catch(err => console.log(err));
+        }
     } else { return; }
   }
 
   updateDislike = meme => {
     var user = localStorage.getItem('CognitoIdentityServiceProvider.18kp0d0foqkulkcf15kab8r4sm.LastAuthUser');
     console.log(user, meme._id);
+    console.log("this app needs more console logs");
     if (meme.dislikedBy.indexOf(user) < 0) {
       API.downVote({ id: meme._id, username: user })
         .then(res => {
@@ -63,6 +73,13 @@ class Memes extends Component {
           this.loadMemes()
         })
         .catch(err => console.log(err));
+        if (meme.likedBy.indexOf(user) > -1) {
+          API.unDank({ id: meme._id, username: user})
+            .then(res => {
+              console.log("removing from disliked");
+            })
+            .catch(err => console.log(err));
+        }
     } else { return; }
   }
 

@@ -29,15 +29,15 @@ router.route("/upload")
     .post(memeController.create);
 
 router.route("/like")
-    .put(memeController.toggleLike);
+    .put(memeController.upVote);
 
-router.route('/unLike')
-    .put(memeController.unLike);
+router.route('/unDank')
+    .put(memeController.unDank);
     
 router.route("/down")
     .put(memeController.downVote);
 
-router.route('/unDislike')
-    .put(memeController.unDislike);
+router.route('/unStank')
+    .put(memeController.unStank);
 
 module.exports = router;  

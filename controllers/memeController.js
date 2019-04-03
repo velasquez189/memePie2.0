@@ -48,7 +48,7 @@ module.exports = {
             .then(dbModel => res.json(dbModel))
             .catch(err => res.status(422).json(err));
     },
-    toggleLike: function (req, res) {
+    upVote: function (req, res) {
         console.log('changed the like');
         console.log(req.body.id, req.body.username)
         db.Meme
@@ -60,7 +60,7 @@ module.exports = {
             .then(dbModel => res.json(dbModel))
             .catch(err => res.status(422).json(err))
     },
-    unLike: function (req, res) {
+    unDank: function (req, res) {
         console.log(`removing ${req.body.username} from liked database`);
         db.Meme
             .findOneAndUpdate({ _id: req.body.id}, 
@@ -82,7 +82,7 @@ module.exports = {
             .then(dbModel => res.json(dbModel))
             .catch(err => rest.status(422).json(err))
     },
-    unDislike: function (req, res) {
+    unStank: function (req, res) {
         console.log(`removing ${req.body.username} from liked database`);
         db.Meme
             .findOneAndUpdate({ _id: req.body.id}, 

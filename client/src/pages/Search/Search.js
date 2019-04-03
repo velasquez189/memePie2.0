@@ -67,7 +67,7 @@ class Search extends Component {
     console.log(meme);
     console.log("tiggitytest");
     if (meme.likedBy.indexOf(user) < 0) {
-      API.toggleLike({ id: meme._id, username: user })
+      API.upVote({ id: meme._id, username: user })
         .then(res => {
           console.log("updated meme with like");
           this.setState({ n: this.state.n - 1 });
@@ -76,7 +76,7 @@ class Search extends Component {
         .catch(err => console.log(err));
         // Check if meme is already disliked, then remove downvote from database and adjust total score
         if (meme.dislikedBy.indexOf(user) > -1) {
-          API.unDislike({ id: meme._id, username: user})
+          API.unStank({ id: meme._id, username: user})
             .then(res => {
               console.log("removing from disliked");
             })
@@ -98,7 +98,7 @@ class Search extends Component {
         })
         .catch(err => console.log(err));
         if (meme.likedBy.indexOf(user) > -1) {
-          API.unLike({ id: meme._id, username: user})
+          API.unDank({ id: meme._id, username: user})
             .then(res => {
               console.log("removing from disliked");
             })

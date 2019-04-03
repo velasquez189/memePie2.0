@@ -29,21 +29,21 @@ export default {
         console.log(data);
         return axios.post("/api/memeRoutes/upload", data);
     },
-    toggleLike: function (data) {
+    upVote: function (data) {
         console.log("updating like for" + data);
         return axios.put("/api/memeRoutes/like", data);
     },
-    unLike: function (data) {
+    unDank: function (data) {
         console.log("unliking that shit");
-        return axios.put('/api/memeRoutes/unLike', data);
+        return axios.put('/api/memeRoutes/unDank', data);
     },
     downVote: function (data) {
         console.log("This meme ain't for you")
         return axios.put("/api/memeRoutes/down", data);
     },
-    unDislike: function (data) {
+    unStank: function (data) {
         console.log("i changed my mind");
-        return axios.put('/api/memeRoutes/unDislike', data);
+        return axios.put('/api/memeRoutes/unStank', data);
     },
     // addLike: function (data) {
     //     console.log(`adding a vote to the total`);
