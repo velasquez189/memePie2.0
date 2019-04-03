@@ -18,8 +18,5 @@
   "background_color": "#FFF400",
   "orientation": "portrait",
   "display": "standalone",
-  "theme_color": "#000000",
-  "related_applications": [{
-    "prefer_related_applications": true
-  }]
+  "theme_color": "#000000"
 }

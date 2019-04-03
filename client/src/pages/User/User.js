@@ -129,7 +129,7 @@ class User extends Component {
             <br /><br /><br />
           </List>
         ) : (
-            <h3>No Results</h3>
+            <h3>Post memes, bi.... Please!</h3>
           )}
       </Container>
     )
