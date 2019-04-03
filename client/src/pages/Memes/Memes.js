@@ -36,7 +36,7 @@ class Memes extends Component {
   toggleOffensive = (event) => {
     event.target.src = event.target.alt;
   }
-
+ 
   updateLike = meme => {
     var user = localStorage.getItem('CognitoIdentityServiceProvider.18kp0d0foqkulkcf15kab8r4sm.LastAuthUser');
     console.log(user, meme._id);
@@ -108,6 +108,7 @@ class Memes extends Component {
                 }
                 <div className='row'>
                   <LikeButton onClick={() => this.updateLike(meme)} />
+                  <span className="likes">{meme.totalVote}</span>
                   <DownButton onClick={() => this.updateDislike(meme)} />
                 </div>
               </ListItem>
@@ -119,7 +120,7 @@ class Memes extends Component {
             <br /><br /><br />
           </List>
         ) : (
-            <h3>No Results to Display</h3>
+            <h3>No Results</h3>
           )}
       </Container>
     )

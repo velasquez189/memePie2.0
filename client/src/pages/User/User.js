@@ -45,7 +45,11 @@ class User extends Component {
     console.log(meme);
     if (meme.likedBy.indexOf(user) < 0) {
       API.toggleLike({ id: meme._id, username: user })
-        .then(res => console.log("updated meme with like"))
+        .then(res => {
+          console.log("updated meme with like");
+          this.setState({ n: this.state.n - 1 });
+          this.loadMemes()
+        })
         .catch(err => console.log(err));
     } else { return; }
   }
@@ -54,15 +58,15 @@ class User extends Component {
     var user = localStorage.getItem('CognitoIdentityServiceProvider.18kp0d0foqkulkcf15kab8r4sm.LastAuthUser');
     console.log(user, meme._id);
     if (meme.dislikedBy.indexOf(user) < 0) {
-    API.downVote({id: meme._id, username: user })
-      .then(res => {
-        console.log("updated meme with down vote");
-        this.setState({ n: this.state.n -1 });
-        this.loadMemes()
-      })
-      .catch(err => console.log(err));
-  } else { return; }
-}
+      API.downVote({ id: meme._id, username: user })
+        .then(res => {
+          console.log("updated meme with down vote");
+          this.setState({ n: this.state.n - 1 });
+          this.loadMemes()
+        })
+        .catch(err => console.log(err));
+    } else { return; }
+  }
 
   handleDelete = id => {
     // +    console.log(`Deleting ${id}`);
@@ -111,6 +115,7 @@ class User extends Component {
                 }
                 <div className='row'>
                   <LikeButton onClick={() => this.updateLike(meme)} />
+                  <span className="likes">{meme.totalVote}</span>
                   <DownButton onClick={() => this.updateDislike(meme)} />
                   <DeleteBtn onClick={() => this.handleDelete(meme._id)} />
 
@@ -119,16 +124,16 @@ class User extends Component {
 
             ))}
             <div>
-            <Waypoint onEnter={this.loadMemes}></Waypoint>
+              <Waypoint onEnter={this.loadMemes}></Waypoint>
             </div>
             <br /><br /><br />
           </List>
         ) : (
-            <h3>No Results to Display</h3>
+            <h3>Post memes, bi.... Please!</h3>
           )}
       </Container>
     )
   }
 };
 
-export default withAuthenticator(User, {includeGreetings: true}); 
+export default withAuthenticator(User, { includeGreetings: true }); 

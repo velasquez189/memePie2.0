@@ -32,14 +32,21 @@ body {
   border: none !important;
   font-family: 'Galada', cursive;
   font-size: auto;
+  border-radius: 5px;
 }
 
-.amplify-a, .amplify-nav-button, .amplify-nav-item, #addphoto, .tags-text {
-  font-family: 'Galada', cursive;
+.amplify-a, .amplify-nav-button, .amplify-nav-item, #addphoto, .tags-text, .srch-btn, h4, .meme-loadedby {
+  font-family: 'Galada', cursive !important;
 }
 
+h3 {
+  font-family: 'Press Start 2P', cursive;
+}
 
-
+span.likes {
+  line-height: 38px;
+  font-size: 38px;
+}
 
 .user-name {
   position: absolute;
@@ -50,11 +57,34 @@ input#photoupload {
   margin-bottom: 10px;
 }
 
+.image-upload {
+  width:70%;
+  max-width: 300px;
+  border: 3px solid black;
+  border-radius: 5px;
+}
+
 .meme-tags {
   font-family: 'Galada', cursive;
   font-weight: 700;
   font-size: 20px;
   font-style: oblique;
+}
+
+.srch-rslts {
+  margin-top: 20px !important;
+}
+
+.srch-btn {
+  margin-top: 10px;
+}
+
+.scnd-btn {
+  margin-bottom: 20px;
+}
+
+.dlt-btn {
+  border: 1px solid black;
 }
 
 .dank-btn {
@@ -65,9 +95,8 @@ input#photoupload {
   margin-left: 10px;
 }
 
-.dank-btn:hover, .dank-btn:focus, .dank-btn:active {
-  font-family: 'Press Start 2P', cursive;
-
+.dank-btn:hover {
+background-color: grey;
   /* background-color:darkgray;
   color: black; */
 }
@@ -75,7 +104,6 @@ input#photoupload {
 /* .dank-btn:focus {
   color:blue;
 } */
-
 
 .form-control {
   width: 70%;
@@ -99,4 +127,15 @@ button, input {
 .row {
   /* flex-wrap: nowrap; */
   display: inline-flex;
+}
+
+.terms {
+  margin-left: auto;
+  margin-right: auto;
+  width: 90%;
+  font-size: 10px !important;
+}
+
+.upload-terms {
+  font-size: 10px;
 }

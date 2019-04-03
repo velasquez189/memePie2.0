@@ -14,11 +14,8 @@ class Search extends Component {
     n: 1,
     keyword: "",
     username: "",
+    searchType:""
   };
-
-  componentDidMount() {
-    this.loadMemes();
-  }
 
   handleKeywords = (event) => {
     const { keyword, value } = event.target;
@@ -36,9 +33,8 @@ class Search extends Component {
     API.searchMemes({ query: n, keywords: this.state.keyword })
       .then(res => {
         this.setState({
+          searchType: "tag",
           memes: res.data,
-          // uploadedBy: "", 
-          // tags: [],
           n: this.state.n + 1
         });
         console.log(this.state.memes);
@@ -57,6 +53,7 @@ class Search extends Component {
     API.searchUser({ query: n, username: this.state.username })
       .then(res => {
         this.setState({
+          searchType: "user",
           memes: res.data,
           n: this.state.n + 1
         });
@@ -64,20 +61,48 @@ class Search extends Component {
       }).catch(err => console.log(err));
   }
 
+  updateLike = meme => {
+    var user = localStorage.getItem('CognitoIdentityServiceProvider.18kp0d0foqkulkcf15kab8r4sm.LastAuthUser');
+    console.log(user, meme._id);
+    console.log(meme);
+    if (meme.likedBy.indexOf(user) < 0) {
+      API.toggleLike({ id: meme._id, username: user })
+        .then(res => {
+          console.log("updated meme with like");
+          this.setState({ n: this.state.n - 1 });
+          this.loadMemes()
+        })
+        .catch(err => console.log(err));
+    } else { return; }
+  }
+
+  updateDislike = meme => {
+    var user = localStorage.getItem('CognitoIdentityServiceProvider.18kp0d0foqkulkcf15kab8r4sm.LastAuthUser');
+    console.log(user, meme._id);
+    if (meme.dislikedBy.indexOf(user) < 0) {
+      API.downVote({ id: meme._id, username: user })
+        .then(res => {
+          console.log("updated meme with down vote");
+          this.setState({ n: this.state.n - 1 });
+          this.loadMemes()
+        })
+        .catch(err => console.log(err));
+    } else { return; }
+  }
+
+
   render() {
     return (
       <Container fluid>
-<form>
-        <h4> Search for memes by tag </h4>
+        <h4> Search for Memes by Tag </h4>
         <input type="text" className="form-control" onChange={this.handleKeywords} />
-        <button type='submit' className='btn' onClick={this.loadMemes}> Search </button>
-
+        <button type='submit' className='btn srch-btn' onClick={this.loadMemes}> Search </button>
         <br /><br />
 
-        <h4> Search for memes by user </h4>
+        <h4> Search for Memes by User </h4>
         <input type="text" className="form-control" onChange={this.handleUser} />
-        <button type='submit' className='btn' onClick={this.searchUser}> Search </button>
-</form>
+        <button type='submit' className='btn srch-btn scnd-btn' onClick={this.searchUser}> Search </button>
+
         {this.state.memes.length ? (
 
           <List>
@@ -116,6 +141,7 @@ class Search extends Component {
                 }
                 <div className='row'>
                   <LikeButton onClick={() => this.updateLike(meme)} />
+                  <span className="likes">{meme.totalVote}</span>
                   <DownButton onClick={() => this.updateDislike(meme)} />
                 </div>
 
@@ -129,7 +155,7 @@ class Search extends Component {
             <br /><br /><br />
           </List>
         ) : (
-            <h3>No Results to Display</h3>
+            <h3 className="srch-rslts">No Results</h3>
           )}
       </Container>
     )

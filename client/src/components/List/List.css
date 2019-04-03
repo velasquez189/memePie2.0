@@ -26,4 +26,8 @@
     img {
         width: 240px !important;
     }
+    .dlt-btn, .dank-btn {
+        font-size: 10px;
+        height: 39px;
+    }
 }
